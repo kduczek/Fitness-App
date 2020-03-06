@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             case R.id.nav_settings: //here we can add more button actions from left drawer menu
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
                 break;
+            case R.id.nav_fittnes_center: //here we can add more button actions from left drawer menu
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Fittnes_centerFragment()).commit();
+                break;
+            case R.id.nav_create: //here we can add more button actions from left drawer menu
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreateFragment()).commit();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return  true;
