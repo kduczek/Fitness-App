@@ -6,10 +6,6 @@
 <!--    //this code is responsible for sliding the menu-->
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings"
-            android:title="Ustawienia" />
-        <item
             android:id="@+id/nav_fittnes_center"
             android:icon="@drawable/ic_fitness_center_black_24dp"
             android:title="Plany" />
@@ -18,4 +14,18 @@
             android:icon="@drawable/ic_create_black_24dp"
             android:title="Kreator" />
     </group>
+
+    <item android:title="Narzędzia">
+    <menu>
+        <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Ustawienia" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Wyloguj" />
+
+    </menu>
+    </item>
 </menu>

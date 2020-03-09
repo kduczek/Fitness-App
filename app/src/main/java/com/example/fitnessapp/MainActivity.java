@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 break;
             case R.id.nav_create: //here we can add more button actions from left drawer menu
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreateFragment()).commit();
+                break;
+            case R.id.nav_logout:
+                Toast.makeText(this, "Wylogowano", Toast.LENGTH_SHORT).show();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
