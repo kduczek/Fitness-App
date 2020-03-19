@@ -6,11 +6,11 @@
 <!--    //this code is responsible for sliding the menu-->
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_fittnes_center"
+            android:id="@+id/nav_plany"
             android:icon="@drawable/ic_fitness_center_black_24dp"
             android:title="Plany" />
         <item
-            android:id="@+id/nav_create"
+            android:id="@+id/nav_kreator"
             android:icon="@drawable/ic_create_black_24dp"
             android:title="Kreator" />
     </group>

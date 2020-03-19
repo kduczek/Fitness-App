@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -16,7 +17,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +40,13 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             case R.id.nav_settings: //here we can add more button actions from left drawer menu
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
                 break;
-            case R.id.nav_fittnes_center: //here we can add more button actions from left drawer menu
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Fittnes_centerFragment()).commit();
+            case R.id.nav_plany: //here we can add more button actions from left drawer menu
+                Intent intent = new Intent(this,Plany.class);
+                startActivity(intent);
                 break;
-            case R.id.nav_create: //here we can add more button actions from left drawer menu
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CreateFragment()).commit();
+            case R.id.nav_kreator: //here we can add more button actions from left drawer menu
+                Intent intent2 = new Intent(this,Kreator.class);
+                startActivity(intent2);
                 break;
             case R.id.nav_logout:
                 Toast.makeText(this, "Wylogowano", Toast.LENGTH_SHORT).show();
