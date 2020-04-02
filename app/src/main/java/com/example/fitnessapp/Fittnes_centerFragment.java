@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Fittnes_centerFragment extends Fragment {
+public class Fittnes_centerFragment{
 
     private String Name;
     private String Description;
@@ -36,11 +36,5 @@ public class Fittnes_centerFragment extends Fragment {
 
     public void setDescription(String description) {
         Description = description;
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fitness_center, container, false);
     }
 }
