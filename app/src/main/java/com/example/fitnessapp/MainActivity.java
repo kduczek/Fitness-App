@@ -14,11 +14,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 startActivity(intent2);
                 break;
             case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Wylogowano", Toast.LENGTH_SHORT).show();
+                Intent intToLogin = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intToLogin);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
