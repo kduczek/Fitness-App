@@ -7,23 +7,49 @@
     tools:context=".Plany">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/CwiczenieNumer2"
+        android:layout_width="144dp"
+        android:layout_height="22dp"
+        android:gravity="center"
+        android:text="Numer cwiczenia"
+        app:layout_constraintBottom_toTopOf="@+id/CwiczenieOpis"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
+        app:layout_constraintVertical_bias="0.768" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="272dp"
-        android:layout_height="358dp"
-        android:text="TextView"
+        android:id="@+id/CwiczenieOpis"
+        android:layout_width="247dp"
+        android:layout_height="430dp"
+        android:text="Tresc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.303" />
+
+    <Button
+        android:id="@+id/Nastepne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nastepne"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/CwiczenieOpis" />
+
+    <TextView
+        android:id="@+id/NazwaPlanu2"
+        android:layout_width="144dp"
+        android:layout_height="18dp"
+        android:text="Nazwa"
+        app:layout_constraintBottom_toTopOf="@+id/CwiczenieNumer2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
 </androidx.constraintlayout.widget.ConstraintLayout>
