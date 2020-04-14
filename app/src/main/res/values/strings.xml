@@ -4,4 +4,6 @@
     <string name="navigation_drawer_close">Close Navigation drawer</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="brakKonta">Nie masz jeszcze konta? <font fgcolor='#01C6DB'>Zarejestruj się</font></string>
+    <string name="posiadaKonto">Masz już konto? <font fgcolor='#01C6DB'>Zaloguj się</font></string>
 </resources>
