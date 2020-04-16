@@ -24,12 +24,13 @@
         android:id="@+id/CwiczenieOpis"
         android:layout_width="247dp"
         android:layout_height="430dp"
+        android:gravity="center"
         android:text="Tresc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.461" />
+        app:layout_constraintVertical_bias="0.591" />
 
     <Button
         android:id="@+id/Nastepne"
@@ -46,6 +47,7 @@
         android:layout_width="144dp"
         android:layout_height="18dp"
         android:text="Nazwa"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/CwiczenieNumer2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

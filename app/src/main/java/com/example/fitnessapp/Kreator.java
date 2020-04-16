@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Kreator extends AppCompatActivity {
     EditText editText1,editText2;
     TextView numer;
-    String[] cwiczenia;
+    String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
     String nazwa;
     int i = 0;
     Button button;
@@ -34,7 +34,7 @@ public class Kreator extends AppCompatActivity {
         numer=findViewById(R.id.CwiczenieNumer);
         button=findViewById(R.id.Zapisz);
         button2=findViewById(R.id.Dalej);
-        cwiczenia=new String[7];
+
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -45,34 +45,48 @@ public class Kreator extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 if(i==0)
-                {numer.setText("Cwiczenie drugie");}
-                else if(i==1)
-                {numer.setText("Cwiczenie trzecie");}
+                {numer.setText("Cwiczenie drugie");
+                cwiczenie1=editText2.getText().toString();
+                editText2.setText(""); }
+                 if(i==1)
+                {numer.setText("Cwiczenie trzecie");
+                cwiczenie2=editText2.getText().toString();
+                editText2.setText("");}
                 else if(i==2)
-                {numer.setText("Cwiczenie czwarte");}
+                {numer.setText("Cwiczenie czwarte");
+                cwiczenie3=editText2.getText().toString();
+                editText2.setText("");}
                 else if(i==3)
-                {numer.setText("Cwiczenie piate");}
+                {numer.setText("Cwiczenie piate");
+                cwiczenie4=editText2.getText().toString();
+                editText2.setText("");}
                 else if(i==4)
-                {numer.setText("Cwiczenie szuste");}
+                {numer.setText("Cwiczenie szuste");
+                cwiczenie5=editText2.getText().toString();
+                editText2.setText("");}
                 else if(i==5)
-                {numer.setText("Cwiczenie siudme");}
-                if(i<7)
-                {
-                 cwiczenia[i]=editText2.getText().toString();
-                    if(i!=6){editText2.setText("");}
-                    i++;
+                {numer.setText("Cwiczenie siudme");
+                cwiczenie6=editText2.getText().toString();
+                editText2.setText("");
                 }
+                else if(i==6)
+                {numer.setText("Cwiczenie siudme");
+                cwiczenie7=editText2.getText().toString();}
+
+                i++;
+
             }});
-        if(editText1.getText().toString()!="Name"){
-            nazwa=editText1.getText().toString();
-            ref=db.collection("PLANY").document(nazwa);}
 
 }
 
     private void SaveData(){
         String name=editText1.getText().toString();
 
-       Plan plan=new Plan(name,cwiczenia[0],cwiczenia[1],cwiczenia[2],cwiczenia[3],cwiczenia[4],cwiczenia[5],cwiczenia[6]);
+        if(editText1.getText().toString()!="Name"){
+            nazwa=editText1.getText().toString();
+            ref=db.collection("PLANY").document(nazwa);}
+
+       Plan plan=new Plan(name,cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7);
        ref.set(plan)
                 .addOnSuccessListener(new OnSuccessListener<Void>(){
                     @Override
