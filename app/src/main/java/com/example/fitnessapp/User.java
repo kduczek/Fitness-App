@@ -1,40 +1,51 @@
 package com.example.fitnessapp;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+
 public class User {
-    private String Name;
+    private String username;
     private String email;
-    private String password;
+    String uID;
+    FirebaseFirestore db=FirebaseFirestore.getInstance();
+    FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
-    public User(){}
-
-    public User(String n,String e,String p)
+    public User()
     {
-        Name=n;
-        email=e;
-        password=p;
+        uID = mFirebaseAuth.getCurrentUser().getUid();
+        final DocumentReference ref=db.collection("users").document(uID);
+        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                username = documentSnapshot.getString("username");
+                email = documentSnapshot.getString("email");
+            }
+        });
+    }
+
+    public User(String u,String e)
+    {
+        username = u;
+        email = e;
+
     }
 
     public String getName(){
-        return Name;
+        return username;
     }
 
-    private void setName(String n) {
-        Name = n;
-    }
+    private void setName(String u) { username = u; }
 
-    private String getEmail() {
+    public String getEmail() {
         return email;
     }
 
     private void setEmail(String e){
-        email=e;
+        email = e;
     }
 
-    private String getPassword(){
-        return password;
-    }
-
-    private void setPassword(String p){
-        password=p;
-    }
 }

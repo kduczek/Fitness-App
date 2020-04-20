@@ -2,108 +2,108 @@ package com.example.fitnessapp;
 
 public class Postepy {
 
-    private String NazwaUrzytkownika;
-    private int ilosctrenigow;
-    private int ilosccwiczen;
-    private double poczatkowyobwodpasa;
-    private double poczatkowyodbwodklaty;
-    private double poczatkowyobwodbiecpsa;
-    private double obwodpasa;
-    private double odbwodklaty;
-    private double obwodbiecpsa;
+    private String NazwaUzytkownika;
+    private int iloscTrenigow;
+    private int iloscCwiczen;
+    private double poczatkowyObwodPasa;
+    private double poczatkowyObwodKlaty;
+    private double poczatkowyObwodBicepsa;
+    private double obwodPasa;
+    private double obwodKlaty;
+    private double obwodBicepsa;
 
     public Postepy() {
     }
 
-    public Postepy(String nazwaUrzytkownika, double poczatkowyobwodpasa, double poczatkowyodbwodklaty, double poczatkowyobwodbiecpsa) {
-        NazwaUrzytkownika = nazwaUrzytkownika;
-        this.ilosctrenigow = 0;
-        this.ilosccwiczen = 0;
-        this.poczatkowyobwodpasa = poczatkowyobwodpasa;
-        this.poczatkowyodbwodklaty = poczatkowyodbwodklaty;
-        this.poczatkowyobwodbiecpsa = poczatkowyobwodbiecpsa;
-        this.obwodpasa = poczatkowyobwodpasa;
-        this.odbwodklaty = poczatkowyodbwodklaty;
-        this.obwodbiecpsa = poczatkowyobwodbiecpsa;
+    public Postepy(String nazwaUzytkownika, double poczatkowyobwodpasa, double poczatkowyobwodklaty, double poczatkowyobwodbicepsa) {
+        NazwaUzytkownika = nazwaUzytkownika;
+        this.iloscTrenigow = 0;
+        this.iloscCwiczen = 0;
+        this.poczatkowyObwodPasa = poczatkowyobwodpasa;
+        this.poczatkowyObwodKlaty = poczatkowyobwodklaty;
+        this.poczatkowyObwodBicepsa = poczatkowyobwodbicepsa;
+        this.obwodPasa = poczatkowyobwodpasa;
+        this.obwodKlaty = poczatkowyobwodklaty;
+        this.obwodBicepsa = poczatkowyobwodbicepsa;
     }
 
-    public String getNazwaUrzytkownika() {
-        return NazwaUrzytkownika;
+    public String getNazwaUzytkownika() {
+        return NazwaUzytkownika;
     }
 
-    public void setNazwaUrzytkownika(String nazwaUrzytkownika) {
-        NazwaUrzytkownika = nazwaUrzytkownika;
+    public void setNazwaUzytkownika(String nazwaUzytkownika) {
+        NazwaUzytkownika = nazwaUzytkownika;
     }
 
-    public int getIlosctrenigow() {
-        return ilosctrenigow;
+    public int getIloscTrenigow() {
+        return iloscTrenigow;
     }
 
-    public void setIlosctrenigow(int ilosctrenigow) {
-        this.ilosctrenigow = ilosctrenigow;
+    public void setIloscTrenigow(int iloscTrenigow) {
+        this.iloscTrenigow = iloscTrenigow;
     }
 
-    public int getIlosccwiczen() {
-        return ilosccwiczen;
+    public int getIloscCwiczen() {
+        return iloscCwiczen;
     }
 
-    public void setIlosccwiczen(int ilosccwiczen) {
-        this.ilosccwiczen = ilosccwiczen;
+    public void setIloscCwiczen(int iloscCwiczen) {
+        this.iloscCwiczen = iloscCwiczen;
     }
 
-    public double getPoczatkowyobwodpasa() {
-        return poczatkowyobwodpasa;
+    public double getPoczatkowyObwodPasa() {
+        return poczatkowyObwodPasa;
     }
 
-    public void setPoczatkowyobwodpasa(double poczatkowyobwodpasa) {
-        this.poczatkowyobwodpasa = poczatkowyobwodpasa;
+    public void setPoczatkowyObwodPasa(double poczatkowyObwodPasa) {
+        this.poczatkowyObwodPasa = poczatkowyObwodPasa;
     }
 
-    public double getPoczatkowyodbwodklaty() {
-        return poczatkowyodbwodklaty;
+    public double getPoczatkowyObwodKlaty() {
+        return poczatkowyObwodKlaty;
     }
 
-    public void setPoczatkowyodbwodklaty(double poczatkowyodbwodklaty) {
-        this.poczatkowyodbwodklaty = poczatkowyodbwodklaty;
+    public void setPoczatkowyObwodKlaty(double poczatkowyObwodKlaty) {
+        this.poczatkowyObwodKlaty = poczatkowyObwodKlaty;
     }
 
-    public double getPoczatkowyobwodbiecpsa() {
-        return poczatkowyobwodbiecpsa;
+    public double getPoczatkowyObwodBicepsa() {
+        return poczatkowyObwodBicepsa;
     }
 
-    public void setPoczatkowyobwodbiecpsa(double poczatkowyobwodbiecpsa) {
-        this.poczatkowyobwodbiecpsa = poczatkowyobwodbiecpsa;
+    public void setPoczatkowyObwodBicepsa(double poczatkowyObwodBicepsa) {
+        this.poczatkowyObwodBicepsa = poczatkowyObwodBicepsa;
     }
 
-    public double getObwodpasa() {
-        return obwodpasa;
+    public double getObwodPasa() {
+        return obwodPasa;
     }
 
-    public void setObwodpasa(double obwodpasa) {
-        this.obwodpasa = obwodpasa;
+    public void setObwodPasa(double obwodPasa) {
+        this.obwodPasa = obwodPasa;
     }
 
-    public double getOdbwodklaty() {
-        return odbwodklaty;
+    public double getObwodKlaty() {
+        return obwodKlaty;
     }
 
-    public void setOdbwodklaty(double odbwodklaty) {
-        this.odbwodklaty = odbwodklaty;
+    public void setObwodKlaty(double obwodKlaty) {
+        this.obwodKlaty = obwodKlaty;
     }
 
-    public double getObwodbiecpsa() {
-        return obwodbiecpsa;
+    public double getObwodBicepsa() {
+        return obwodBicepsa;
     }
 
-    public void setObwodbiecpsa(double obwodbiecpsa) {
-        this.obwodbiecpsa = obwodbiecpsa;
+    public void setObwodBicepsa(double obwodBicepsa) {
+        this.obwodBicepsa = obwodBicepsa;
     }
 
     public void Trenigplsu(){
-    ilosctrenigow++;
+    iloscTrenigow++;
     }
 
     public void Cwiczeniaplus(){
-        ilosccwiczen++;
+        iloscCwiczen++;
     }
 }

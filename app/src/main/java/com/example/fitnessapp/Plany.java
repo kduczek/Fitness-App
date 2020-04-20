@@ -22,7 +22,7 @@ public class Plany extends AppCompatActivity {
     Button button;
     String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
     Plan plan;
-    FirebaseFirestore db=FirebaseFirestore.getInstance();;
+    FirebaseFirestore db=FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +68,13 @@ public class Plany extends AppCompatActivity {
                 {Numer.setText("Cwiczenie czwarte");
                     Tresc.setText(cwiczenie4);}
                 else if(i==4)
-                {Numer.setText("Cwiczenie piate");
+                {Numer.setText("Cwiczenie piąte");
                     Tresc.setText(cwiczenie5);}
                 else if(i==5)
-                {Numer.setText("Cwiczenie szuste");
+                {Numer.setText("Cwiczenie szóste");
                     Tresc.setText(cwiczenie6);}
                 else if(i==6)
-                {Numer.setText("Cwiczenie Siudme");
+                {Numer.setText("Cwiczenie siódme");
                     Tresc.setText(cwiczenie7);}
 
                 i++;
