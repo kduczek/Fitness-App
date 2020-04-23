@@ -5,9 +5,9 @@
     <item android:title="General">
         <menu>
             <item
-                android:id="@+id/nav_home"
-                android:icon="@drawable/ic_home_black_24dp"
-                android:title="Strona główna" />
+                android:id="@+id/nav_profil"
+                android:icon="@drawable/ic_portrait_black_24dp"
+                android:title="Profil" />
             <item
                 android:id="@+id/nav_plans"
                 android:icon="@drawable/ic_fitness_center_black_24dp"
@@ -16,6 +16,10 @@
                 android:id="@+id/nav_creator"
                 android:icon="@drawable/ic_create_black_24dp"
                 android:title="Kreator planów" />
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home_black_24dp"
+                android:title="Strona główna" />
         </menu>
     </item>
 

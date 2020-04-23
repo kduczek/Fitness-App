@@ -11,6 +11,7 @@ public class User {
     private String username;
     private String email;
     String uID;
+
     FirebaseFirestore db=FirebaseFirestore.getInstance();
     FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -31,21 +32,22 @@ public class User {
     {
         username = u;
         email = e;
-
     }
 
-    public String getName(){
+    public String getUsername() {
         return username;
     }
 
-    private void setName(String u) { username = u; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getEmail() {
         return email;
     }
 
-    private void setEmail(String e){
-        email = e;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

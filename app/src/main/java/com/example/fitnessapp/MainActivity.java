@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 Intent intent2 = new Intent(this,Kreator.class);
                 startActivity(intent2);
                 break;
+            case R.id.nav_profil:
+                Intent intent3 = new Intent(this,Profil.class);
+                startActivity(intent3);
+                break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).commit();
                 break;

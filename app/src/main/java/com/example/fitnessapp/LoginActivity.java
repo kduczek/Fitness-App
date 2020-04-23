@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                             username = (String) user.get("username");
                             mail = (String) user.get("email");
                             u = new User(username, mail);
-                            Toast.makeText(LoginActivity.this, "Witaj " + u.getName(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Witaj " + u.getUsername(), Toast.LENGTH_SHORT).show();
                             //tvDrawerUsername.setText(username);
                         }
                     });
