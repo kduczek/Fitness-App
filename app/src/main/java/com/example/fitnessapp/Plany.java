@@ -27,12 +27,12 @@ public class Plany extends AppCompatActivity {
     int i=0;
     Button button;
     String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
+    String plan1,plan2,plan3,plan4,plan5,plan6,plan7;
+    String licznik;
     String nazwa;
     String username;
     String mail;
     Konto urzytkownik;
-    int c=0;
-    Plan plan;
     String uID;
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -54,11 +54,11 @@ public class Plany extends AppCompatActivity {
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Map<String, Object> user = documentSnapshot.getData();
-                username = (String) user.get("username");
-                mail=(String) user.get("email");
+                //Map<String, Object> user = documentSnapshot.getData();
+                username = documentSnapshot.getString("username");
+                //mail=(String) user.get("email");
 
-                DocumentReference refkonto=db.collection("Konta").document((String) user.get("username"));
+                DocumentReference refkonto=db.collection("Konta").document(username);
 
                 refkonto.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -75,38 +75,45 @@ public class Plany extends AppCompatActivity {
                                 documentSnapshotk.getString("plan7"),
                                 documentSnapshotk.getString("licznik"));
 
+                        plan1=documentSnapshotk.getString("plan1");
+                        plan2=documentSnapshotk.getString("plan2");
+                        plan3=documentSnapshotk.getString("plan3");
+                        plan4=documentSnapshotk.getString("plan4");
+                        plan5=documentSnapshotk.getString("plan5");
+                        plan6=documentSnapshotk.getString("plan6");
+                        plan7=documentSnapshotk.getString("plan7");
+                        licznik=documentSnapshotk.getString("licznik");
                         String nrplanu="";
 
-                        if(documentSnapshotk.getString("licznik")=="0")
+                        if(licznik.equals("0"))
                         {
-                            nrplanu=documentSnapshotk.getString("plan1");
+                            nrplanu=plan1;
                         }
-                        else if(documentSnapshotk.getString("licznik")=="1")
+                        else if(licznik.equals("1"))
                         {
-                            nrplanu=documentSnapshotk.getString("plan2");
+                            nrplanu=plan2;
                         }
-                        else if(documentSnapshotk.getString("licznik")=="2")
+                        else if(licznik.equals("2"))
                         {
-                            nrplanu=documentSnapshotk.getString("plan3");
+                            nrplanu=plan3;
                         }
-                        /* else if(urzytkownik.getLicznik()=="3")
+                        else if(licznik.equals("3"))
                         {
-                            nrplanu=urzytkownik.getPlan4();
+                            nrplanu=plan4;
                         }
-                        else if(urzytkownik.getLicznik()=="4")
+                        else if(licznik.equals("4"))
                         {
-                            nrplanu=urzytkownik.getPlan5();
+                            nrplanu=plan5;
                         }
-                        else if(urzytkownik.getLicznik()=="5")
+                        else if(licznik.equals("5"))
                         {
-                            nrplanu=urzytkownik.getPlan6();
+                            nrplanu=plan2;
                         }
-                        else if(urzytkownik.getLicznik()=="6")
+                        else if(licznik.equals("6"))
                         {
-                            nrplanu=urzytkownik.getPlan7();
-                        }*/
-
-                        if(nrplanu!=""){
+                            nrplanu=plan7;
+                        }
+                        if(!nrplanu.equals("")){
                         DocumentReference refplan=db.collection("PLANY").document(nrplanu);
 
                         refplan.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -125,8 +132,8 @@ public class Plany extends AppCompatActivity {
                                     Tresc.setText(cwiczenie1);}
                                 i++;
                             }
-                        });
-                    }}
+                        });}
+                    }
 
                 });
 
