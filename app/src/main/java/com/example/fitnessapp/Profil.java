@@ -1,12 +1,15 @@
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +39,11 @@ public class Profil extends AppCompatActivity {
     DocumentReference ref;
     DocumentReference refk;
     String uID;
+    public Postepy postepy;
+    public ProgressBar pgBic, pgPas, pgWaga;
+    public TextView poczBic, poczPas, poczWaga, docBic, docPas, docWaga;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +51,15 @@ public class Profil extends AppCompatActivity {
         setContentView(R.layout.activity_profil);
 
         Name = findViewById(R.id.NazwaUrzytkownika);
+        pgBic = findViewById(R.id.pgBic);
+        pgPas = findViewById(R.id.pgPas);
+        pgWaga = findViewById(R.id.pgWaga);
+        poczBic = findViewById(R.id.bicPocz);
+        poczPas = findViewById(R.id.pasPocz);
+        poczWaga = findViewById(R.id.wagaPocz);
+        docBic = findViewById(R.id.bicDoc);
+        docPas = findViewById(R.id.pasDoc);
+        docWaga = findViewById(R.id.wagaDoc);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         uID = mFirebaseAuth.getCurrentUser().getUid();
@@ -52,12 +68,28 @@ public class Profil extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 //Map<String, Object> user = documentSnapshot.getData();
-                nazwa = documentSnapshot.getString("username");
+                nazwa = documentSnapshot.getString("email");
                 //mail = (String) user.get("email");
             }
         });
 
         Name.setText(nazwa);
+        postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
+        poczBic.setText(Integer.toString(postepy.getPoczatkowyObwodBicepsa()));
+        poczPas.setText(Integer.toString(postepy.getPoczatkowyObwodPasa()));
+        poczWaga.setText(Integer.toString(postepy.getPoczatkowaWaga()));
+        docBic.setText(Integer.toString(postepy.getDocelowyObwodBicepsa()));
+        docPas.setText(Integer.toString(postepy.getDocelowyObwodPasa()));
+        docWaga.setText(Integer.toString(postepy.getDocelowaWaga()));
+
+        pgBic.setMax(postepy.getDocelowyObwodBicepsa());
+        pgBic.setMin(postepy.getPoczatkowyObwodBicepsa());
+        pgWaga.setMax(postepy.getDocelowaWaga());
+        pgWaga.setMin(postepy.getPoczatkowaWaga());
+        pgPas.setMax(postepy.getDocelowyObwodPasa());
+        pgPas.setMin(postepy.getPoczatkowyObwodPasa());
+
+
 
         //DocumentReference refkonto=db.collection("Konta").document(name);
 

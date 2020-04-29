@@ -5,26 +5,30 @@ public class Postepy {
     private String NazwaUzytkownika;
     private int iloscTrenigow;
     private int iloscCwiczen;
-    private double poczatkowyObwodPasa;
-    private double poczatkowyObwodKlaty;
-    private double poczatkowyObwodBicepsa;
-    private double obwodPasa;
-    private double obwodKlaty;
-    private double obwodBicepsa;
+    private int poczatkowyObwodPasa;
+    //private int poczatkowyObwodKlaty;
+    private int poczatkowyObwodBicepsa;
+    private int poczatkowaWaga;
+    private int docelowyObwodPasa;
+    //private int docelowyoObwodKlaty;
+    private int docelowyObwodBicepsa;
+    private int docelowaWaga;
 
     public Postepy() {
     }
 
-    public Postepy(String nazwaUzytkownika, double poczatkowyobwodpasa, double poczatkowyobwodklaty, double poczatkowyobwodbicepsa) {
+    public Postepy(String nazwaUzytkownika, int poczatkowyobwodpasa, int poczatkowyobwodbicepsa, int poczatkowawaga, int docelowyobwodpasa, int docelowyobwodbicepsa, int docelowawaga) {
         NazwaUzytkownika = nazwaUzytkownika;
         this.iloscTrenigow = 0;
         this.iloscCwiczen = 0;
         this.poczatkowyObwodPasa = poczatkowyobwodpasa;
-        this.poczatkowyObwodKlaty = poczatkowyobwodklaty;
+        //this.poczatkowyObwodKlaty = poczatkowyobwodklaty;
         this.poczatkowyObwodBicepsa = poczatkowyobwodbicepsa;
-        this.obwodPasa = poczatkowyobwodpasa;
-        this.obwodKlaty = poczatkowyobwodklaty;
-        this.obwodBicepsa = poczatkowyobwodbicepsa;
+        this.poczatkowaWaga = poczatkowawaga;
+        this.docelowyObwodPasa = docelowyobwodpasa;
+        //this.docelowyoObwodKlaty = docelowyobwodklaty;
+        this.docelowyObwodBicepsa = docelowyobwodbicepsa;
+        this.docelowaWaga = docelowawaga;
     }
 
     public String getNazwaUzytkownika() {
@@ -51,55 +55,61 @@ public class Postepy {
         this.iloscCwiczen = iloscCwiczen;
     }
 
-    public double getPoczatkowyObwodPasa() {
+    public int getPoczatkowyObwodPasa() {
         return poczatkowyObwodPasa;
     }
 
-    public void setPoczatkowyObwodPasa(double poczatkowyObwodPasa) {
+    public void setPoczatkowyObwodPasa(int poczatkowyObwodPasa) {
         this.poczatkowyObwodPasa = poczatkowyObwodPasa;
     }
 
-    public double getPoczatkowyObwodKlaty() {
-        return poczatkowyObwodKlaty;
-    }
+//    public int getPoczatkowyObwodKlaty() {
+//        return poczatkowyObwodKlaty;
+//    }
+//
+//    public void setPoczatkowyObwodKlaty(int poczatkowyObwodKlaty) {
+//        this.poczatkowyObwodKlaty = poczatkowyObwodKlaty;
+//    }
 
-    public void setPoczatkowyObwodKlaty(double poczatkowyObwodKlaty) {
-        this.poczatkowyObwodKlaty = poczatkowyObwodKlaty;
-    }
-
-    public double getPoczatkowyObwodBicepsa() {
+    public int getPoczatkowyObwodBicepsa() {
         return poczatkowyObwodBicepsa;
     }
 
-    public void setPoczatkowyObwodBicepsa(double poczatkowyObwodBicepsa) {
+    public void setPoczatkowyObwodBicepsa(int poczatkowyObwodBicepsa) {
         this.poczatkowyObwodBicepsa = poczatkowyObwodBicepsa;
     }
 
-    public double getObwodPasa() {
-        return obwodPasa;
+    public int getPoczatkowaWaga() {return poczatkowaWaga;}
+
+    public void setPoczatkowaWaga(int poczatkowawaga) {this.poczatkowaWaga = poczatkowawaga;}
+
+    public int getDocelowyObwodPasa() {
+        return docelowyObwodPasa;
     }
 
-    public void setObwodPasa(double obwodPasa) {
-        this.obwodPasa = obwodPasa;
+    public void setDocelowyObwodPasa(int obwodPasa) {
+        this.docelowyObwodPasa = obwodPasa;
     }
 
-    public double getObwodKlaty() {
-        return obwodKlaty;
+//    public int getDocelowyoObwodKlaty() {
+//        return docelowyoObwodKlaty;
+//    }
+//
+//    public void setDocelowyoObwodKlaty(int obwodKlaty) {
+//        this.docelowyoObwodKlaty = obwodKlaty;
+//    }
+
+    public int getDocelowyObwodBicepsa() {
+        return docelowyObwodBicepsa;
     }
 
-    public void setObwodKlaty(double obwodKlaty) {
-        this.obwodKlaty = obwodKlaty;
-    }
+    public void setDocelowyObwodBicepsa(int obwodBicepsa) { this.docelowyObwodBicepsa = obwodBicepsa; }
 
-    public double getObwodBicepsa() {
-        return obwodBicepsa;
-    }
+    public int getDocelowaWaga() {return docelowaWaga;}
 
-    public void setObwodBicepsa(double obwodBicepsa) {
-        this.obwodBicepsa = obwodBicepsa;
-    }
+    public void setDocelowaWaga(int docelowawaga) {this.docelowaWaga = docelowawaga;}
 
-    public void Trenigplsu(){
+    public void Trenigplus(){
     iloscTrenigow++;
     }
 

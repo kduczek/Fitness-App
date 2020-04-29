@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userID;
     private static final String TAG = "MyActivity";
+    Konto konto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             else
                             {
+                                konto = new Konto(usernm, email);
                                 userID = mFirebaseAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = fStore.collection("users").document(userID);
                                 Map<String, Object> user = new HashMap<>();

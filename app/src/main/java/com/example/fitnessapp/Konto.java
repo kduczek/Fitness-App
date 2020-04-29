@@ -21,6 +21,12 @@ public class Konto {
     public Konto() {
     }
 
+    public  Konto(String u, String e)
+    {
+        username = u;
+        email = e;
+    }
+
     public Konto(String u,String e,String p1,String p2,String p3,String p4,String p5,String p6,String p7,String l) {
         username = u;
         email = e;
