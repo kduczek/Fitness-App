@@ -25,6 +25,8 @@ public class Plany extends AppCompatActivity {
 
     TextView Nazwa,Tresc,Numer;
     int i=0;
+    int c=1;
+    int t=0;
     Button button;
     String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
     String plan1,plan2,plan3,plan4,plan5,plan6,plan7;
@@ -33,6 +35,7 @@ public class Plany extends AppCompatActivity {
     String username;
     String mail;
     Konto urzytkownik;
+    //Postepy postep;
     String uID;
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -54,9 +57,7 @@ public class Plany extends AppCompatActivity {
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                //Map<String, Object> user = documentSnapshot.getData();
                 username = documentSnapshot.getString("username");
-                //mail=(String) user.get("email");
 
                 DocumentReference refkonto=db.collection("Konta").document(username);
 
@@ -113,7 +114,9 @@ public class Plany extends AppCompatActivity {
                         {
                             nrplanu=plan7;
                         }
-                        if(!nrplanu.equals("")){
+                        if(!nrplanu.equals("")){}
+                        else{nrplanu=plan1;licznik="0";urzytkownik.setLicznik("0");}
+
                         DocumentReference refplan=db.collection("PLANY").document(nrplanu);
 
                         refplan.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -132,7 +135,7 @@ public class Plany extends AppCompatActivity {
                                     Tresc.setText(cwiczenie1);}
                                 i++;
                             }
-                        });}
+                        });
                     }
 
                 });
@@ -145,39 +148,80 @@ public class Plany extends AppCompatActivity {
             public void onClick(View view){
                if(i==1)
                 {Numer.setText("Cwiczenie drugie");
-                    Tresc.setText(cwiczenie2);}
+                    Tresc.setText(cwiczenie2);
+                    }
                 else if(i==2)
-                {Numer.setText("Cwiczenie trzecie");
-                    Tresc.setText(cwiczenie3);}
+                {
+                    if(cwiczenie3.equals(""))
+                    {
+                        Numer.setText("Koniec");
+                        SaveData();
+                    }
+                    else
+                    {
+                    Numer.setText("Cwiczenie trzecie");
+                    Tresc.setText(cwiczenie3);
+                    }
+                }
                 else if(i==3)
-                {Numer.setText("Cwiczenie czwarte");
-                    Tresc.setText(cwiczenie4);}
+                {
+                    if(cwiczenie4.equals(""))
+                    {
+                        Numer.setText("Koniec");
+                        SaveData();
+                    }
+                    else
+                    {
+                      Numer.setText("Cwiczenie czwarte");
+                      Tresc.setText(cwiczenie4);
+                    }
+                }
                 else if(i==4)
-                {Numer.setText("Cwiczenie piąte");
-                    Tresc.setText(cwiczenie5);}
+                {
+                    if(cwiczenie5.equals(""))
+                    {
+                        Numer.setText("Koniec");
+                        SaveData();
+                    }
+                    else
+                    {
+                     Numer.setText("Cwiczenie piate");
+                     Tresc.setText(cwiczenie5);
+                    }
+                }
                 else if(i==5)
-                {Numer.setText("Cwiczenie szóste");
-                    Tresc.setText(cwiczenie6);}
-                else if(i==6)
-                {Numer.setText("Cwiczenie siódme");
+                {if(cwiczenie6.equals(""))
+                {
+                    Numer.setText("Koniec");
+                    SaveData();
+                }
+                else
+                {
+                    Numer.setText("Cwiczenie szuste");
+                    Tresc.setText(cwiczenie6);
+                }}
+                else if(i==6){
+
+
+                    Numer.setText("Cwiczenie siudme");
                     Tresc.setText(cwiczenie7);
-
-                    int w=Integer.parseInt(urzytkownik.getLicznik());
-                    w++;
-
-                    urzytkownik.setLicznik(String.valueOf(w));
-                    SaveData();}
+                    SaveData();
+                }
 
                 i++;
-
+                c++;
             }});
 
 
     }
 
         private void SaveData() {
-        FirebaseFirestore dba=FirebaseFirestore.getInstance();
-        final DocumentReference refkontoaktualizacja = dba.collection("Konta").document(urzytkownik.getKontoname());
+        t++;
+            int w=Integer.parseInt(urzytkownik.getLicznik());
+            w++;
+            urzytkownik.setLicznik(String.valueOf(w));
+        final FirebaseFirestore dba=FirebaseFirestore.getInstance();
+        DocumentReference refkontoaktualizacja = dba.collection("Konta").document(urzytkownik.getKontoname());
         refkontoaktualizacja.set(urzytkownik)
                 .addOnSuccessListener(new OnSuccessListener<Void>(){
                     @Override
@@ -185,5 +229,43 @@ public class Plany extends AppCompatActivity {
                         Toast.makeText(Plany.this,"Zapisane",Toast.LENGTH_SHORT).show();
                     }
                 });
+
+            DocumentReference refpostepy=dba.collection("Postepy").document(urzytkownik.getKontoname());
+
+
+            refpostepy.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                    Postepy postep;
+                            String dane1=documentSnapshot.getString("nazwaUzytkownika");
+                            String dane2=documentSnapshot.getString("poczatkowyObwodPasa");
+                            String dane3= documentSnapshot.getString("poczatkowyObwodBicepsa");
+                            String dane4 =documentSnapshot.getString("poczatkowaWaga");
+                            String dane5=documentSnapshot.getString("docelowyObwodPasa");
+                            String dane6=documentSnapshot.getString("docelowyObwodBicepsa");
+                            String dane7=documentSnapshot.getString("docelowaWaga");
+                            String dane8=documentSnapshot.getString("iloscCwiczen");
+                            String dane9=documentSnapshot.getString("iloscTrenigow");
+
+
+                    postep=new Postepy(dane1,dane2,dane3,dane4,dane5,dane6,dane7,dane8,dane9);
+                    postep.cwiczeniaplus(c);
+                    postep.trenigplus(t);
+
+                    DocumentReference refpostepaktualizacja = dba.collection("Postepy").document(urzytkownik.getKontoname());
+                    refpostepaktualizacja.set(postep)
+                            .addOnSuccessListener(new OnSuccessListener<Void>(){
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(Plany.this,"Postepy",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+
+
+
+            });
+
     }
 }

@@ -63,18 +63,15 @@ public class Profil extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         uID = mFirebaseAuth.getCurrentUser().getUid();
-        final DocumentReference ref = db.collection("users").document(uID);
+        DocumentReference ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                //Map<String, Object> user = documentSnapshot.getData();
-                nazwa = documentSnapshot.getString("email");
-                //mail = (String) user.get("email");
+                nazwa = documentSnapshot.getString("username");
+                Name.setText(nazwa);
             }
         });
-
-        Name.setText(nazwa);
-        postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
+        /*postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
         poczBic.setText(Integer.toString(postepy.getPoczatkowyObwodBicepsa()));
         poczPas.setText(Integer.toString(postepy.getPoczatkowyObwodPasa()));
         poczWaga.setText(Integer.toString(postepy.getPoczatkowaWaga()));
@@ -83,11 +80,11 @@ public class Profil extends AppCompatActivity {
         docWaga.setText(Integer.toString(postepy.getDocelowaWaga()));
 
         pgBic.setMax(postepy.getDocelowyObwodBicepsa());
-        pgBic.setMin(postepy.getPoczatkowyObwodBicepsa());
+        //pgBic.setMin(postepy.getPoczatkowyObwodBicepsa());
         pgWaga.setMax(postepy.getDocelowaWaga());
-        pgWaga.setMin(postepy.getPoczatkowaWaga());
+        //pgWaga.setMin(postepy.getPoczatkowaWaga());
         pgPas.setMax(postepy.getDocelowyObwodPasa());
-        pgPas.setMin(postepy.getPoczatkowyObwodPasa());
+        //pgPas.setMin(postepy.getPoczatkowyObwodPasa());*/
 
 
 

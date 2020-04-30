@@ -85,7 +85,6 @@ public class Kreator extends AppCompatActivity {
         if(editText1.getText().toString()!="Name"){
             nazwa=editText1.getText().toString();
             ref=db.collection("PLANY").document(nazwa);}
-
        Plan plan=new Plan(name,cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7);
        ref.set(plan)
                 .addOnSuccessListener(new OnSuccessListener<Void>(){
