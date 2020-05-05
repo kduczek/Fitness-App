@@ -35,13 +35,12 @@ public class Profil extends AppCompatActivity {
     Postepy postep;
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
-    FirebaseFirestore dbr=FirebaseFirestore.getInstance();
     DocumentReference ref;
-    DocumentReference refk;
     String uID;
     public Postepy postepy;
     public ProgressBar pgBic, pgPas, pgWaga;
     public TextView poczBic, poczPas, poczWaga, docBic, docPas, docWaga;
+    public Button button;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -60,15 +59,31 @@ public class Profil extends AppCompatActivity {
         docBic = findViewById(R.id.bicDoc);
         docPas = findViewById(R.id.pasDoc);
         docWaga = findViewById(R.id.wagaDoc);
+        button = findViewById(R.id.buttonUpdate);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         uID = mFirebaseAuth.getCurrentUser().getUid();
-        DocumentReference ref = db.collection("users").document(uID);
+        ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 nazwa = documentSnapshot.getString("username");
                 Name.setText(nazwa);
+            }
+        });
+        //chcialbym tu zmienic kolekcje i pobrac
+        ref = db.collection("Postepy").document(nazwa);
+//        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                //poczBic.setText(documentSnapshot.getString("poczatkowyObwodBicepsa"));
+//            }
+//        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Update();
             }
         });
         /*postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
@@ -84,7 +99,7 @@ public class Profil extends AppCompatActivity {
         pgWaga.setMax(postepy.getDocelowaWaga());
         //pgWaga.setMin(postepy.getPoczatkowaWaga());
         pgPas.setMax(postepy.getDocelowyObwodPasa());
-        //pgPas.setMin(postepy.getPoczatkowyObwodPasa());*/
+        //pgPas.setMin(postepy.getPoczatkowyObwodPasa());
 
 
 
@@ -106,6 +121,10 @@ public class Profil extends AppCompatActivity {
                 }
             }
         });*/
+
+    }
+
+    private void Update() {
 
     }
 }
