@@ -69,16 +69,31 @@ public class Profil extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 nazwa = documentSnapshot.getString("username");
                 Name.setText(nazwa);
+                ref = db.collection("Postepy").document(nazwa);
+                ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        poczBic.setText(documentSnapshot.getString("poczatkowyObwodBicepsa"));
+                        poczPas.setText(documentSnapshot.getString("poczatkowyObwodPasa"));
+                        poczWaga.setText(documentSnapshot.getString("poczatkowaWaga"));
+                        docBic.setText(documentSnapshot.getString("docelowyObwodBicepsa"));
+                        docPas.setText(documentSnapshot.getString("docelowyObwodPasa"));
+                        docWaga.setText(documentSnapshot.getString("docelowaWaga"));
+                        //tutaj ustawiasz te paski
+
+                    }
+                });
             }
         });
+
         //chcialbym tu zmienic kolekcje i pobrac
-        ref = db.collection("Postepy").document(nazwa);
-//        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                //poczBic.setText(documentSnapshot.getString("poczatkowyObwodBicepsa"));
-//            }
-//        });
+        /*ref = db.collection("Postepy").document(Name.getText().toString());
+        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                poczBic.setText(documentSnapshot.getString("poczatkowyObwodBicepsa"));
+            }
+        });*/
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +101,8 @@ public class Profil extends AppCompatActivity {
                 Update();
             }
         });
-        /*postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
-        poczBic.setText(Integer.toString(postepy.getPoczatkowyObwodBicepsa()));
+        //postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
+        /*poczBic.setText(Integer.toString(postepy.getPoczatkowyObwodBicepsa()));
         poczPas.setText(Integer.toString(postepy.getPoczatkowyObwodPasa()));
         poczWaga.setText(Integer.toString(postepy.getPoczatkowaWaga()));
         docBic.setText(Integer.toString(postepy.getDocelowyObwodBicepsa()));
