@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Profil">
 
+<!--    tego include trzeba dac na koncu, jak sie robi jakies zmiany to go zakomentowac-->
+    <include
+        android:id="@+id/include"
+        layout="@layout/drawer_toolbar"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="261dp" />
+
     <EditText
         android:id="@+id/editTextWagaProfil"
         android:layout_width="50dp"

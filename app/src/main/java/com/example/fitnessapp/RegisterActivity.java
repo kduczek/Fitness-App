@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             else
                             {
-                                konto = new Konto(usernm, email);
+                                konto = new Konto(usernm, email, "", "", "", "", "", "", "", "");
                                 userID = mFirebaseAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = fStore.collection("users").document(userID);
                                 Map<String, Object> user = new HashMap<>();
@@ -101,6 +101,15 @@ public class RegisterActivity extends AppCompatActivity {
                                         Log.d(TAG, "onFailure " + e.toString());
                                     }
                                 });
+                                //tu zaczyna sie wrazliwy fragment
+                                documentReference = fStore.collection("Konta").document(usernm);
+                                documentReference.set(konto).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+
+                                    }
+                                });
+                                //a tu konczy
                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                             }
                         }

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     Toolbar toolbar;
     NavigationView navigationView;
     FirebaseAuth mFirebaseAuth;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DocumentReference ref;
     TextView user;
+    String uID;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
@@ -39,6 +43,18 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        uID = mFirebaseAuth.getCurrentUser().getUid();
+        ref = db.collection("users").document(uID);
+        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                user = findViewById(R.id.textViewUser);
+                user.setText(documentSnapshot.getString("username"));
+            }
+        });
+
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -96,13 +112,4 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         return  true;
     }
 
-    @Override
-    public void onBackPressed() {
-//        if(drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        }
-//        else {
-//            super.onBackPressed();
-//            }
-    }
 }

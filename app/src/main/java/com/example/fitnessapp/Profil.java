@@ -31,9 +31,9 @@ public class Profil extends AppCompatActivity {
 
     public TextView Name;
     public String nazwa;
-    String mail;
-    Konto konto;
-    Postepy postep;
+//    String mail;
+//    Konto konto;
+//    Postepy postep;
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
     DocumentReference ref;
