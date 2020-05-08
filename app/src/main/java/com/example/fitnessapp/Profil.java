@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class Profil extends AppCompatActivity {
     public ProgressBar pgBic, pgPas, pgWaga;
     public TextView poczBic, poczPas, poczWaga, docBic, docPas, docWaga;
     public Button button;
+    public EditText editWaga, editPas, editBiceps;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -79,21 +81,20 @@ public class Profil extends AppCompatActivity {
                         docBic.setText(documentSnapshot.getString("docelowyObwodBicepsa"));
                         docPas.setText(documentSnapshot.getString("docelowyObwodPasa"));
                         docWaga.setText(documentSnapshot.getString("docelowaWaga"));
-                        //tutaj ustawiasz te paski
+
+                        pgBic.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodBicepsa")));
+                        pgWaga.setMax(Integer.parseInt(documentSnapshot.getString("docelowaWaga")));
+                        pgPas.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodPasa")));
+
+                        pgBic.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodBicepsa")));
+                        pgWaga.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowaWaga")));
+                        pgPas.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodPasa")));
+
 
                     }
                 });
             }
         });
-
-        //chcialbym tu zmienic kolekcje i pobrac
-        /*ref = db.collection("Postepy").document(Name.getText().toString());
-        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                poczBic.setText(documentSnapshot.getString("poczatkowyObwodBicepsa"));
-            }
-        });*/
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,24 +102,6 @@ public class Profil extends AppCompatActivity {
                 Update();
             }
         });
-        //postepy = new Postepy(nazwa, 50, 30, 70, 46, 33, 75);
-        /*poczBic.setText(Integer.toString(postepy.getPoczatkowyObwodBicepsa()));
-        poczPas.setText(Integer.toString(postepy.getPoczatkowyObwodPasa()));
-        poczWaga.setText(Integer.toString(postepy.getPoczatkowaWaga()));
-        docBic.setText(Integer.toString(postepy.getDocelowyObwodBicepsa()));
-        docPas.setText(Integer.toString(postepy.getDocelowyObwodPasa()));
-        docWaga.setText(Integer.toString(postepy.getDocelowaWaga()));
-
-        pgBic.setMax(postepy.getDocelowyObwodBicepsa());
-        //pgBic.setMin(postepy.getPoczatkowyObwodBicepsa());
-        pgWaga.setMax(postepy.getDocelowaWaga());
-        //pgWaga.setMin(postepy.getPoczatkowaWaga());
-        pgPas.setMax(postepy.getDocelowyObwodPasa());
-        //pgPas.setMin(postepy.getPoczatkowyObwodPasa());
-
-
-
-        //DocumentReference refkonto=db.collection("Konta").document(name);
 
         /*To narazie nie jest uzywane ale bedzie chyba
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
@@ -140,6 +123,12 @@ public class Profil extends AppCompatActivity {
     }
 
     private void Update() {
+        editWaga = findViewById(R.id.editTextWagaProfil);
+        editPas = findViewById(R.id.editTextPasProfil);
+        editBiceps = findViewById(R.id.editTextBicepsProfil);
 
+        pgWaga.setProgress(Integer.parseInt(editWaga.getText().toString()));
+        pgPas.setProgress(Integer.parseInt(editPas.getText().toString()));
+        pgBic.setProgress(Integer.parseInt(editBiceps.getText().toString()));
     }
 }
