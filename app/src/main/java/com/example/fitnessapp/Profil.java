@@ -1,26 +1,37 @@
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -43,6 +54,8 @@ public class Profil extends AppCompatActivity {
     public TextView poczBic, poczPas, poczWaga, docBic, docPas, docWaga;
     public Button button;
     public EditText editWaga, editPas, editBiceps;
+    ImageView profileImage;
+    StorageReference storageReference;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -62,9 +75,21 @@ public class Profil extends AppCompatActivity {
         docPas = findViewById(R.id.pasDoc);
         docWaga = findViewById(R.id.wagaDoc);
         button = findViewById(R.id.buttonUpdate);
+        profileImage = findViewById(R.id.imageViewProfil);
+
+
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         uID = mFirebaseAuth.getCurrentUser().getUid();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageReference.child("users/" + uID + "/profile.jpg"); //lokalna referencja
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
         ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -130,5 +155,45 @@ public class Profil extends AppCompatActivity {
         pgWaga.setProgress(Integer.parseInt(editWaga.getText().toString()));
         pgPas.setProgress(Integer.parseInt(editPas.getText().toString()));
         pgBic.setProgress(Integer.parseInt(editBiceps.getText().toString()));
+    }
+
+    public void pictureClick(View view) {
+        Intent openGaleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(openGaleryIntent, 2137);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 2137)
+        {
+            if(resultCode == Activity.RESULT_OK)
+            {
+                Uri imageUri = data.getData();
+                //profileImage.setImageURI(imageUri);
+                
+                uploadImageToFirebase(imageUri);
+            }
+        }
+    }
+
+    private void uploadImageToFirebase(Uri imageUri) {
+        final StorageReference fileRef = storageReference.child("users/" + uID + "/profile.jpg");
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profileImage);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(Profil.this, "Nie udało się ustawić zdjęcia", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
