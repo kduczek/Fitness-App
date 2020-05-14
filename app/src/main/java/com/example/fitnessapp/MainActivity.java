@@ -98,6 +98,10 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 Intent intent4 = new Intent(this,DodajDane.class);
                 startActivity(intent4);
                 break;
+            case R.id.nav_wybor:
+                Intent intent5 = new Intent(this,Wybor.class);
+                startActivity(intent5);
+                break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).commit();
                 break;

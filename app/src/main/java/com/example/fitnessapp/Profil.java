@@ -107,13 +107,13 @@ public class Profil extends AppCompatActivity {
                         docPas.setText(documentSnapshot.getString("docelowyObwodPasa"));
                         docWaga.setText(documentSnapshot.getString("docelowaWaga"));
 
-                        pgBic.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodBicepsa")));
+                        /*pgBic.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodBicepsa")));
                         pgWaga.setMax(Integer.parseInt(documentSnapshot.getString("docelowaWaga")));
                         pgPas.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodPasa")));
 
                         pgBic.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodBicepsa")));
                         pgWaga.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowaWaga")));
-                        pgPas.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodPasa")));
+                        pgPas.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodPasa")));*/
 
 
                     }

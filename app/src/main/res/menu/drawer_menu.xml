@@ -24,6 +24,10 @@
                 android:id="@+id/nav_dane"
                 android:icon="@drawable/ic_publish_black_24dp"
                 android:title="Dodaj dane" />
+            <item
+                android:id="@+id/nav_wybor"
+                android:icon="@drawable/ic_add_black_24dp"
+                android:title="Wybor" />
         </menu>
     </item>
 

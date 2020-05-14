@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".DodajDane"></activity>
+        <activity android:name=".Wybor"></activity>
+        <activity android:name=".DodajDane" />
         <activity android:name=".Profil" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
