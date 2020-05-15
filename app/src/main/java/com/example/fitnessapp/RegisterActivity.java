@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -32,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore fStore;
     String userID;
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "Registration";
     Konto konto;
 
     @Override
@@ -89,6 +90,20 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             else
                             {
+                                FirebaseUser fUser = mFirebaseAuth.getCurrentUser();
+                                fUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(RegisterActivity.this, "Email weryfikacyjny został wysłany.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d(TAG, "onFailur: Email not sent " + e.getMessage());
+                                    }
+                                });
+
+
                                 konto = new Konto(usernm, email, "", "", "", "", "", "", "", "");
                                 userID = mFirebaseAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = fStore.collection("users").document(userID);

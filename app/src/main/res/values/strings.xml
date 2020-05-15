@@ -6,4 +6,5 @@
     <string name="close">close</string>
     <string name="brakKonta">Nie masz jeszcze konta? <font fgcolor='#01C6DB'>Zarejestruj się</font></string>
     <string name="posiadaKonto">Masz już konto? <font fgcolor='#01C6DB'>Zaloguj się</font></string>
+    <string name="zapomnialemHaslo"><font fgcolor='#F5372A'>Zapomniałem hasła</font></string>
 </resources>
