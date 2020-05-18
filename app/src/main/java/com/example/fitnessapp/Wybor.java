@@ -1,9 +1,14 @@
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,7 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
-public class Wybor extends AppCompatActivity {
+public class Wybor extends Fragment {
 
     public TextView Name;
     public String nazwa;
@@ -29,12 +34,12 @@ public class Wybor extends AppCompatActivity {
     String uID;
     List Lista;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wybor);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.activity_wybor, container, false);
 
-        Name = findViewById(R.id.textView3);
+        Name = view.findViewById(R.id.textView3);
         Name.setText("ddd");
 
 
@@ -50,28 +55,30 @@ public class Wybor extends AppCompatActivity {
                         }
                     }
                 });
+        return view;
     }
 
-    private void Pobierz() {
-        FirebaseAuth mFirebaseAuth;
-        FirebaseFirestore db=FirebaseFirestore.getInstance();
-        DocumentReference ref;
-        String uID;
-
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        uID = mFirebaseAuth.getCurrentUser().getUid();
-
-        ref = db.collection("users").document(uID);
-
-        String n="";
-
-        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            String n;
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                n = documentSnapshot.getString("username");
-            }
-        });
-    }
+    //nie jest narazie nigdzie uzywana ta metoda wiec ja zakomentowalem
+//    private void Pobierz() {
+//        FirebaseAuth mFirebaseAuth;
+//        FirebaseFirestore db=FirebaseFirestore.getInstance();
+//        DocumentReference ref;
+//        String uID;
+//
+//        mFirebaseAuth = FirebaseAuth.getInstance();
+//        uID = mFirebaseAuth.getCurrentUser().getUid();
+//
+//        ref = db.collection("users").document(uID);
+//
+//        String n="";
+//
+//        ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            String n;
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                n = documentSnapshot.getString("username");
+//            }
+//        });
+//    }
 
 }

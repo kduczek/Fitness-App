@@ -1,9 +1,13 @@
 package com.example.fitnessapp;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,27 +17,24 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Kreator extends AppCompatActivity {
-    EditText editText1,editText2;
-    TextView numer;
-    String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
-    String nazwa;
-    int i = 0;
-    Button button;
-    Button button2;
-    FirebaseFirestore db=FirebaseFirestore.getInstance();
-    DocumentReference ref;
+public class Kreator extends Fragment {
+    private EditText editText1,editText2;
+    private TextView numer;
+    private String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
+    private int i = 0;
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
+    private DocumentReference ref;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kreator);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.activity_kreator, container, false);
 
-        editText1=findViewById(R.id.NazwaPlanu);
-        editText2=findViewById(R.id.Cwiczenie);
-        numer=findViewById(R.id.CwiczenieNumer);
-        button=findViewById(R.id.Zapisz);
-        button2=findViewById(R.id.Dalej);
+        editText1 = view.findViewById(R.id.NazwaPlanu);
+        editText2 = view.findViewById(R.id.Cwiczenie);
+        numer = view.findViewById(R.id.CwiczenieNumer);
+        Button button = view.findViewById(R.id.Zapisz);
+        Button button2 = view.findViewById(R.id.Dalej);
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,21 +77,21 @@ public class Kreator extends AppCompatActivity {
                 i++;
 
             }});
-
+        return view;
 }
 
     private void SaveData(){
         String name=editText1.getText().toString();
 
         if(editText1.getText().toString()!="Name"){
-            nazwa=editText1.getText().toString();
+            String nazwa = editText1.getText().toString();
             ref=db.collection("PLANY").document(nazwa);}
        Plan plan=new Plan(name,cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7);
        ref.set(plan)
                 .addOnSuccessListener(new OnSuccessListener<Void>(){
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(Kreator.this,"Zapisane",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"Zapisane",Toast.LENGTH_SHORT).show();
                     }
                 });
     }

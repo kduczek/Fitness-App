@@ -81,26 +81,23 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MainFragment()).commit();
+//                Intent intent6 = new Intent(this, MainActivity.class);
+//                startActivity(intent6);
                 break;
             case R.id.nav_plans:
-                Intent intent = new Intent(this,Plany.class);
-                startActivity(intent);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Plany()).commit();
                 break;
             case R.id.nav_creator:
-                Intent intent2 = new Intent(this,Kreator.class);
-                startActivity(intent2);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Kreator()).commit();
                 break;
             case R.id.nav_profil:
-                Intent intent3 = new Intent(this,Profil.class);
-                startActivity(intent3);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new ProfilFragment()).commit();
                 break;
             case R.id.nav_dane:
-                Intent intent4 = new Intent(this,DodajDane.class);
-                startActivity(intent4);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new DodajDane()).commit();
                 break;
             case R.id.nav_wybor:
-                Intent intent5 = new Intent(this,Wybor.class);
-                startActivity(intent5);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Wybor()).commit();
                 break;
             case R.id.nav_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).commit();
@@ -115,5 +112,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         drawerLayout.closeDrawer(GravityCompat.START);
         return  true;
     }
-
+    //to do zmiany jeszcze
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
 }

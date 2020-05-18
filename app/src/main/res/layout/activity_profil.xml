@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profil">
+    tools:context=".ProfilFragment">
 
 <!--    tego include trzeba dac na koncu, jak sie robi jakies zmiany to go zakomentowac-->
     <include
@@ -44,7 +44,6 @@
         android:layout_width="134dp"
         android:layout_height="116dp"
         android:layout_marginTop="16dp"
-        android:onClick="pictureClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

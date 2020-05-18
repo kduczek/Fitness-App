@@ -1,13 +1,16 @@
 package com.example.fitnessapp;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -16,21 +19,20 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DodajDane extends AppCompatActivity {
+public class DodajDane extends Fragment {
 
-    EditText editTextWaga1, editTextWaga2, editTextBiceps1, editTextBiceps2, editTextPas1, editTextPas2;
-    Button button;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference ref;
-    FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-    String name, waga1, waga2, biceps1, biceps2, pas1, pas2, uID;
+    private EditText editTextWaga1, editTextWaga2, editTextBiceps1, editTextBiceps2, editTextPas1, editTextPas2;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DocumentReference ref;
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+    private String name;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dodaj_dane);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.activity_dodaj_dane, container, false);
 
-        uID = mFirebaseAuth.getCurrentUser().getUid();
+        String uID = mFirebaseAuth.getCurrentUser().getUid();
         ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -39,13 +41,13 @@ public class DodajDane extends AppCompatActivity {
             }
         });
 
-        button = findViewById(R.id.ZapiszDane);
-        editTextBiceps1 = findViewById(R.id.editTextBiceps1);
-        editTextBiceps2 = findViewById(R.id.editTextBiceps2);
-        editTextPas1 = findViewById(R.id.editTextPas1);
-        editTextPas2 = findViewById(R.id.editTextPas2);
-        editTextWaga1 = findViewById(R.id.editTextWaga1);
-        editTextWaga2 = findViewById(R.id.editTextWaga2);
+        Button button = view.findViewById(R.id.ZapiszDane);
+        editTextBiceps1 = view.findViewById(R.id.editTextBiceps1);
+        editTextBiceps2 = view.findViewById(R.id.editTextBiceps2);
+        editTextPas1 = view.findViewById(R.id.editTextPas1);
+        editTextPas2 = view.findViewById(R.id.editTextPas2);
+        editTextWaga1 = view.findViewById(R.id.editTextWaga1);
+        editTextWaga2 = view.findViewById(R.id.editTextWaga2);
 
 
 
@@ -57,16 +59,17 @@ public class DodajDane extends AppCompatActivity {
             }
         });
 
+        return view;
     }
 
     private void SaveData() {
 
-        waga1 = editTextWaga1.getText().toString();
-        waga2 = editTextWaga2.getText().toString();
-        biceps1 = editTextBiceps1.getText().toString();
-        biceps2 = editTextBiceps2.getText().toString();
-        pas1 = editTextPas1.getText().toString();
-        pas2 = editTextPas2.getText().toString();
+        String waga1 = editTextWaga1.getText().toString();
+        String waga2 = editTextWaga2.getText().toString();
+        String biceps1 = editTextBiceps1.getText().toString();
+        String biceps2 = editTextBiceps2.getText().toString();
+        String pas1 = editTextPas1.getText().toString();
+        String pas2 = editTextPas2.getText().toString();
 
 
 
@@ -110,14 +113,14 @@ public class DodajDane extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>(){
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(DodajDane.this,"Zapisano",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Zapisano",Toast.LENGTH_SHORT).show();
                                 editTextBiceps1.setText("");
                                 editTextBiceps2.setText("");
                                 editTextWaga1.setText("");
                                 editTextWaga2.setText("");
                                 editTextPas1.setText("");
                                 editTextPas2.setText("");
-                                Intent intToHome = new Intent(DodajDane.this, MainActivity.class);
+                                Intent intToHome = new Intent(DodajDane.this.getActivity(), MainActivity.class);
                                 startActivity(intToHome);
                             }
                         });

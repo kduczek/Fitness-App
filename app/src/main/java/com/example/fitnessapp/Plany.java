@@ -1,58 +1,52 @@
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.w3c.dom.Document;
 
-import java.util.Map;
 
-public class Plany extends AppCompatActivity {
+public class Plany extends Fragment {
 
-    TextView Nazwa,Tresc,Numer;
-    int i=0;
-    int c=1;
-    int t=0;
-    Button button;
-    String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
-    String plan1,plan2,plan3,plan4,plan5,plan6,plan7;
-    String licznik;
-    String nazwa;
-    String username;
-    String mail;
-    Konto urzytkownik;
-    //Postepy postep;
-    String uID;
-    FirebaseAuth mFirebaseAuth;
-    FirebaseFirestore db=FirebaseFirestore.getInstance();
+    private TextView Nazwa,Tresc,Numer;
+    private int i=0;
+    private int c=1;
+    private int t=0;
+    private String cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7;
+    private String plan1,plan2,plan3,plan4,plan5,plan6,plan7;
+    private String licznik;
+    private String username;
+    private Konto urzytkownik;
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plany);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View view = inflater.inflate(R.layout.activity_plany, container, false);
 
-        Nazwa=findViewById(R.id.NazwaPlanu2);
-        Tresc=findViewById(R.id.CwiczenieOpis);
-        Numer=findViewById(R.id.CwiczenieNumer2);
-        button=findViewById(R.id.Nastepne);
+        Nazwa = view.findViewById(R.id.NazwaPlanu2);
+        Tresc = view.findViewById(R.id.CwiczenieOpis);
+        Numer = view.findViewById(R.id.CwiczenieNumer2);
+        Button button = view.findViewById(R.id.Nastepne);
 
-        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
-        uID = mFirebaseAuth.getCurrentUser().getUid();
+        String uID = mFirebaseAuth.getCurrentUser().getUid();
         DocumentReference ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -86,33 +80,28 @@ public class Plany extends AppCompatActivity {
                         licznik=documentSnapshotk.getString("licznik");
                         String nrplanu="";
 
-                        if(licznik.equals("0"))
-                        {
-                            nrplanu=plan1;
-                        }
-                        else if(licznik.equals("1"))
-                        {
-                            nrplanu=plan2;
-                        }
-                        else if(licznik.equals("2"))
-                        {
-                            nrplanu=plan3;
-                        }
-                        else if(licznik.equals("3"))
-                        {
-                            nrplanu=plan4;
-                        }
-                        else if(licznik.equals("4"))
-                        {
-                            nrplanu=plan5;
-                        }
-                        else if(licznik.equals("5"))
-                        {
-                            nrplanu=plan2;
-                        }
-                        else if(licznik.equals("6"))
-                        {
-                            nrplanu=plan7;
+                        switch (licznik) {
+                            case "0":
+                                nrplanu = plan1;
+                                break;
+                            case "1":
+                                nrplanu = plan2;
+                                break;
+                            case "2":
+                                nrplanu = plan3;
+                                break;
+                            case "3":
+                                nrplanu = plan4;
+                                break;
+                            case "4":
+                                nrplanu = plan5;
+                                break;
+                            case "5":
+                                nrplanu = plan6;
+                                break;
+                            case "6":
+                                nrplanu = plan7;
+                                break;
                         }
                         if(!nrplanu.equals("")){}
                         else{nrplanu=plan1;licznik="0";urzytkownik.setLicznik("0");}
@@ -212,7 +201,7 @@ public class Plany extends AppCompatActivity {
                 c++;
             }});
 
-
+        return view;
     }
 
         private void SaveData() {
@@ -226,7 +215,7 @@ public class Plany extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>(){
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(Plany.this,"Zapisane",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"Zapisane",Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -258,7 +247,7 @@ public class Plany extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<Void>(){
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(Plany.this,"Postepy",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"Postepy",Toast.LENGTH_SHORT).show();
                                 }
                             });
                 }
