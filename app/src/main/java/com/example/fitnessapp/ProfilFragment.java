@@ -1,8 +1,10 @@
 package com.example.fitnessapp;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -17,11 +19,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,6 +34,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 public class ProfilFragment extends Fragment {
 
@@ -64,7 +71,7 @@ public class ProfilFragment extends Fragment {
         profileImage = view.findViewById(R.id.imageViewProfil);
 
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-        uID = mFirebaseAuth.getCurrentUser().getUid();
+        uID = Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid();
 
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("users/" + uID + "/profile.jpg"); //lokalna referencja
@@ -83,6 +90,7 @@ public class ProfilFragment extends Fragment {
                 Name.setText(nazwa);
                 ref = db.collection("Postepy").document(nazwa);
                 ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         poczBic.setText(documentSnapshot.getString("poczatkowyObwodBicepsa"));
@@ -92,17 +100,47 @@ public class ProfilFragment extends Fragment {
                         docPas.setText(documentSnapshot.getString("docelowyObwodPasa"));
                         docWaga.setText(documentSnapshot.getString("docelowaWaga"));
 
-                        /*pgBic.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodBicepsa")));
-                        pgWaga.setMax(Integer.parseInt(documentSnapshot.getString("docelowaWaga")));
-                        pgPas.setMax(Integer.parseInt(documentSnapshot.getString("docelowyObwodPasa")));
+                        pgBic.setMax(Integer.parseInt(Objects.requireNonNull(documentSnapshot.getString("docelowyObwodBicepsa"))));
+                        pgWaga.setMax(Integer.parseInt(Objects.requireNonNull(documentSnapshot.getString("docelowaWaga"))));
+                        pgPas.setMax(Integer.parseInt(Objects.requireNonNull(documentSnapshot.getString("docelowyObwodPasa"))));
 
-                        pgBic.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodBicepsa")));
-                        pgWaga.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowaWaga")));
-                        pgPas.setMin(Integer.parseInt(documentSnapshot.getString("poczatkowyObwodPasa")));*/
+                        pgBic.setMin(Integer.parseInt(Objects.requireNonNull(documentSnapshot.getString("poczatkowyObwodBicepsa"))));
+                        pgWaga.setMin(Integer.parseInt(Objects.requireNonNull(documentSnapshot.getString("poczatkowaWaga"))));
+                        pgPas.setMin(Integer.parseInt(Objects.requireNonNull(documentSnapshot.getString("poczatkowyObwodPasa"))));
                     }
                 });
             }
         });
+
+        final FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if(!user.isEmailVerified())
+        {
+            AlertDialog.Builder VerifyEmailDialog = new AlertDialog.Builder(view.getContext());
+            VerifyEmailDialog.setTitle("Weryfikacja adresu E-mail");
+            VerifyEmailDialog.setMessage("Nie aktywowałeś jeszcze swojego adresu e-mail");
+            VerifyEmailDialog.setPositiveButton("Wyślij ponownie", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ponowne wyslanie maila
+                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getContext(), "Email weryfikacyjny został wysłany.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+
+            VerifyEmailDialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //zamkniecie okna
+                }
+            });
+
+            VerifyEmailDialog.create().show();
+        }
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,10 +148,32 @@ public class ProfilFragment extends Fragment {
                 editWaga = view.findViewById(R.id.editTextWagaProfil);
                 editPas = view.findViewById(R.id.editTextPasProfil);
                 editBiceps = view.findViewById(R.id.editTextBicepsProfil);
+                String waga = editWaga.getText().toString();
+                String pas = editPas.getText().toString();
+                String biceps = editBiceps.getText().toString();
 
-                pgWaga.setProgress(Integer.parseInt(editWaga.getText().toString()));
-                pgPas.setProgress(Integer.parseInt(editPas.getText().toString()));
-                pgBic.setProgress(Integer.parseInt(editBiceps.getText().toString()));
+                if(waga.isEmpty())
+                {
+                    editWaga.setError("Uzupełnij to pole");
+                    editWaga.requestFocus();
+                }
+                else if(biceps.isEmpty())
+                {
+                    editBiceps.setError("Uzupełnij to pole");
+                    editBiceps.requestFocus();
+                }
+                else if(pas.isEmpty())
+                {
+                    editPas.setError("Uzupełnij to pole");
+                    editPas.requestFocus();
+                }
+                else
+                {
+                    pgWaga.setProgress(Integer.parseInt(waga));
+                    pgPas.setProgress(Integer.parseInt(pas));
+                    pgBic.setProgress(Integer.parseInt(biceps));
+                }
+
             }
         });
 
@@ -137,7 +197,7 @@ public class ProfilFragment extends Fragment {
         {
             if(resultCode == Activity.RESULT_OK)
             {
-                Uri imageUri = data.getData();
+                Uri imageUri = Objects.requireNonNull(data).getData();
 
                 uploadImageToFirebase(imageUri);
             }
