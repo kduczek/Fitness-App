@@ -6,19 +6,19 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 
 public class User {
     private String username;
     private String email;
-    String uID;
-
-    FirebaseFirestore db=FirebaseFirestore.getInstance();
-    FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
     public User()
     {
-        uID = mFirebaseAuth.getCurrentUser().getUid();
-        final DocumentReference ref=db.collection("users").document(uID);
+        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+        String uID = Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final DocumentReference ref= db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -28,13 +28,13 @@ public class User {
         });
     }
 
-    public User(String u,String e)
+    User(String u, String e)
     {
         username = u;
         email = e;
     }
 
-    public String getUsername() {
+    String getUsername() {
         return username;
     }
 

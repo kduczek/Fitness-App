@@ -2,7 +2,6 @@ package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
 
 
 public class Plany extends Fragment {
@@ -46,7 +46,7 @@ public class Plany extends Fragment {
 
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
-        String uID = mFirebaseAuth.getCurrentUser().getUid();
+        String uID = Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid();
         DocumentReference ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -80,7 +80,7 @@ public class Plany extends Fragment {
                         licznik=documentSnapshotk.getString("licznik");
                         String nrplanu="";
 
-                        switch (licznik) {
+                        switch (Objects.requireNonNull(licznik)) {
                             case "0":
                                 nrplanu = plan1;
                                 break;

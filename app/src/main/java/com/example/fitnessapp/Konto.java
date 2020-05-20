@@ -1,22 +1,17 @@
 package com.example.fitnessapp;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Konto {
     private String username;
     private String email;
-    String plan1;
-    String plan2;
-    String plan3;
-    String plan4;
-    String plan5;
-    String plan6;
-    String plan7;
-    String licznik;
+    private String plan1;
+    private String plan2;
+    private String plan3;
+    private String plan4;
+    private String plan5;
+    private String plan6;
+    private String plan7;
+    private String licznik;
 
     public Konto() {
     }
@@ -27,7 +22,7 @@ public class Konto {
         email = e;
     }
 
-    public Konto(String u,String e,String p1,String p2,String p3,String p4,String p5,String p6,String p7,String l) {
+    Konto(String u, String e, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String l) {
         username = u;
         email = e;
         plan1=p1;
@@ -40,7 +35,7 @@ public class Konto {
         licznik=l;
     }
 
-    public String getKontoname() {
+    String getKontoname() {
         return username;
     }
 
@@ -112,11 +107,11 @@ public class Konto {
         this.plan7 = plan7;
     }
 
-    public String getLicznik() {
+    String getLicznik() {
         return licznik;
     }
 
-    public void setLicznik(String licznik) {
+    void setLicznik(String licznik) {
         this.licznik = licznik;
     }
 

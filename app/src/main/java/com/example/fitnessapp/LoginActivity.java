@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.Map;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     EditText emailId, password;
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             Map<String, Object> user = documentSnapshot.getData();
-                            username = (String) user.get("username");
+                            username = (String) Objects.requireNonNull(user).get("username");
                             mail = (String) user.get("email");
                             u = new User(username, mail);
                             Toast.makeText(LoginActivity.this, "Witaj " + u.getUsername(), Toast.LENGTH_SHORT).show();
@@ -178,5 +179,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
     }
 }

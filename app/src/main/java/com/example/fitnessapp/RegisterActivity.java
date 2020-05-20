@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -91,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                             else
                             {
                                 FirebaseUser fUser = mFirebaseAuth.getCurrentUser();
-                                fUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                Objects.requireNonNull(fUser).sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(RegisterActivity.this, "Email weryfikacyjny został wysłany.", Toast.LENGTH_SHORT).show();

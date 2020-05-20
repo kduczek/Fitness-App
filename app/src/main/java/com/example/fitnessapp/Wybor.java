@@ -2,7 +2,6 @@ package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -12,20 +11,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Wybor extends Fragment {
 
-    public TextView Name;
+    private TextView Name;
     public String nazwa;
     public Plan plan;
     FirebaseAuth mFirebaseAuth;
@@ -50,7 +48,7 @@ public class Wybor extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<DocumentSnapshot> Lista = task.getResult().getDocuments();
+                            List<DocumentSnapshot> Lista = Objects.requireNonNull(task.getResult()).getDocuments();
                             Name.setText(Lista.get(1).getString("cwiczenie1"));
                         }
                     }

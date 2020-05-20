@@ -12,7 +12,7 @@ public class Plan{
     private String cwiczenie7;
 
 
-    public Plan(String Name,String cwi1,String cwi2,String cwi3,String cwi4,String cwi5,String cwi6,String cwi7) {
+    Plan(String Name, String cwi1, String cwi2, String cwi3, String cwi4, String cwi5, String cwi6, String cwi7) {
         this.Name=Name;
         this.cwiczenie1=cwi1;
         this.cwiczenie2=cwi2;

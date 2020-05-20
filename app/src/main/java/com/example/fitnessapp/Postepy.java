@@ -6,18 +6,16 @@ public class Postepy {
     private String iloscTrenigow;
     private String iloscCwiczen;
     private String poczatkowyObwodPasa;
-    //private int poczatkowyObwodKlaty;
     private String poczatkowyObwodBicepsa;
     private String poczatkowaWaga;
     private String docelowyObwodPasa;
-    //private int docelowyoObwodKlaty;
     private String docelowyObwodBicepsa;
     private String docelowaWaga;
 
     public Postepy() {
     }
 
-    public Postepy(String nazwaUzytkownika, String poczatkowyobwodpasa, String poczatkowyobwodbicepsa, String poczatkowawaga, String docelowyobwodpasa, String docelowyobwodbicepsa, String docelowawaga) {
+    Postepy(String nazwaUzytkownika, String poczatkowyobwodpasa, String poczatkowyobwodbicepsa, String poczatkowawaga, String docelowyobwodpasa, String docelowyobwodbicepsa, String docelowawaga) {
         NazwaUzytkownika = nazwaUzytkownika;
         this.iloscTrenigow = "0";
         this.iloscCwiczen = "0";
@@ -31,7 +29,7 @@ public class Postepy {
         this.docelowaWaga = docelowawaga;
     }
 
-    public Postepy(String nazwaUzytkownika, String poczatkowyobwodpasa, String poczatkowyobwodbicepsa, String poczatkowawaga, String docelowyobwodpasa, String docelowyobwodbicepsa, String docelowawaga,String ilosccwiczen,String ilosctrenigow) {
+    Postepy(String nazwaUzytkownika, String poczatkowyobwodpasa, String poczatkowyobwodbicepsa, String poczatkowawaga, String docelowyobwodpasa, String docelowyobwodbicepsa, String docelowawaga, String ilosccwiczen, String ilosctrenigow) {
         NazwaUzytkownika = nazwaUzytkownika;
         this.iloscTrenigow = ilosctrenigow;
         this.iloscCwiczen = ilosccwiczen;
@@ -115,13 +113,13 @@ public class Postepy {
         this.docelowaWaga = docelowaWaga;
     }
 
-    public void trenigplus(int t){
+    void trenigplus(int t){
         int v=Integer.parseInt(this.iloscTrenigow);
         v=v+t;
         this.iloscTrenigow=String.valueOf(v);
     }
 
-    public void cwiczeniaplus(int c){
+    void cwiczeniaplus(int c){
         int v=Integer.parseInt(this.iloscCwiczen);
         v=v+c;
         this.iloscCwiczen=String.valueOf(v);

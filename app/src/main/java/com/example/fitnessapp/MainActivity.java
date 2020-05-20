@@ -1,18 +1,17 @@
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +21,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
+
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -36,16 +36,14 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     DocumentReference ref;
     TextView user;
     String uID;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        uID = mFirebaseAuth.getCurrentUser().getUid();
+        uID = Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid();
         ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -80,27 +78,26 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         switch(menuItem.getItemId())
         {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MainFragment()).commit();
-//                Intent intent6 = new Intent(this, MainActivity.class);
-//                startActivity(intent6);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MainFragment()).addToBackStack(null).commit();
+
                 break;
             case R.id.nav_plans:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Plany()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Plany()).addToBackStack(null).commit();
                 break;
             case R.id.nav_creator:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Kreator()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Kreator()).addToBackStack(null).commit();
                 break;
             case R.id.nav_profil:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new ProfilFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new ProfilFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_dane:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new DodajDane()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new DodajDane()).addToBackStack(null).commit();
                 break;
             case R.id.nav_wybor:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Wybor()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Wybor()).addToBackStack(null).commit();
                 break;
             case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).addToBackStack(null).commit();
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
@@ -112,9 +109,16 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         drawerLayout.closeDrawer(GravityCompat.START);
         return  true;
     }
-    //to do zmiany jeszcze
+
     @Override
     public void onBackPressed() {
-        moveTaskToBack(false);
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if(count == 0) {
+            moveTaskToBack(false);
+        }
+        else {
+            getSupportFragmentManager().popBackStack();
+        }
     }
 }
