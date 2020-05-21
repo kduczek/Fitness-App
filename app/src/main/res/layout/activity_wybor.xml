@@ -10,12 +10,13 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Wybor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <Button
         android:id="@+id/cofnij"
@@ -24,7 +25,7 @@
         android:text="COFNIJ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.77" />
@@ -36,7 +37,7 @@
         android:text="DALEJ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toEndOf="@+id/cofnij"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.77" />
@@ -48,8 +49,58 @@
         android:text="ZAPISZ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.863" />
+        app:layout_constraintVertical_bias="0.85" />
+
+    <TextView
+        android:id="@+id/cw1"
+        android:layout_width="220dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/zapisz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.115" />
+
+    <TextView
+        android:id="@+id/cw2"
+        android:layout_width="220dp"
+        android:layout_height="73dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/zapisz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cw1"
+        app:layout_constraintVertical_bias="0.171" />
+
+    <TextView
+        android:id="@+id/nrpl"
+        android:layout_width="109dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Podaj numer planu"
+        app:layout_constraintBottom_toTopOf="@+id/zapisz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cw2"
+        app:layout_constraintVertical_bias="0.262" />
+
+    <EditText
+        android:id="@+id/numer"
+        android:layout_width="72dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="NUMER"
+        app:layout_constraintBottom_toTopOf="@+id/zapisz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nrpl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ public class Konto {
     {
         username = u;
         email = e;
+        licznik ="0";
     }
 
     Konto(String u, String e, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String l) {
