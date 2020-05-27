@@ -24,9 +24,9 @@ tools:context=".LoginActivity">
             android:layout_height="match_parent"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="Logowanie"
+            android:text="@string/loginV2"
             android:textColor="@android:color/white"
-            android:textSize="45dp"
+            android:textSize="45sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -36,11 +36,12 @@ tools:context=".LoginActivity">
         android:layout_height="wrap_content"
         android:layout_marginTop="272dp"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="e-mail" />
 
     <EditText
     android:id="@+id/editText4"
@@ -48,12 +49,13 @@ tools:context=".LoginActivity">
     android:layout_height="wrap_content"
     android:ems="10"
     android:inputType="textPassword"
-    android:hint="Hasło"
+    android:hint="@string/password"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/editText3"
-    app:layout_constraintVertical_bias="0.052" />
+    app:layout_constraintVertical_bias="0.052"
+        android:autofillHints="password" />
 
 <TextView
 
@@ -74,7 +76,7 @@ tools:context=".LoginActivity">
     android:layout_height="wrap_content"
     android:layout_marginLeft="100dp"
     android:layout_marginRight="100dp"
-    android:text="Zaloguj się"
+    android:text="@string/login"
     android:textColor="@android:color/white"
     android:background="@color/colorLogin2"
     app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -94,7 +96,8 @@ tools:context=".LoginActivity">
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.693"
+        android:contentDescription="@string/loginIcon" />
 
     <TextView
         android:id="@+id/forgotPassword"

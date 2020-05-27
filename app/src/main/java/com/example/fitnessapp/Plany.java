@@ -213,7 +213,7 @@ public class Plany extends Fragment {
         FirebaseFirestore dbb=FirebaseFirestore.getInstance();
             dbb.collection("Konta").document(urzytkownik.getKontoname()).update(
                    "licznik", urzytkownik.getLicznik());
-            Tresc.setText(urzytkownik.getLicznik()+urzytkownik.getKontoname());
+            //Tresc.setText(urzytkownik.getLicznik()+urzytkownik.getKontoname());
 
 
             DocumentReference refpostepy=dba.collection("Postepy").document(urzytkownik.getKontoname());

@@ -4,7 +4,45 @@
     <string name="navigation_drawer_close">Close Navigation drawer</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="DrawerDesc">DrawerMenuIcon</string>
+    <string name="DrawerText">Drawer Header</string>
+    <string name="main">Główne</string>
+    <string name="profile">Profil</string>
+    <string name="home">Strona główna</string>
+    <string name="plans">Plany</string>
+    <string name="creator">Kreator Planów</string>
+    <string name="add">Dodaj dane</string>
+    <string name="choose">Wybór</string>
+    <string name="logout">Wyloguj</string>
+    <string name="cm">cm</string>
+    <string name="kg">kg</string>
+    <string name="saveData">Zapisz Dane</string>
+    <string name="fillData">Uzupełnij Dane</string>
+    <string name="start">Start</string>
+    <string name="target">Cel</string>
+    <string name="weight">Waga</string>
+    <string name="biceps">Obwód bicepsa</string>
+    <string name="waist">Obwód pasa</string>
+    <string name="login">Zaloguj się</string>
+    <string name="password">Hasło</string>
+    <string name="email">E-mail</string>
+    <string name="loginV2">Logowanie</string>
+    <string name="loginIcon">Login Icon</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="register">Zarejestruj się</string>
+    <string name="registerV2">Rejestracja</string>
+    <string name="planTitle">Nazwa planu</string>
+    <string name="next">Dalej</string>
+    <string name="save">Zapisz</string>
+    <string name="exDescription">Opisz swoje ćwiczenie</string>
     <string name="brakKonta">Nie masz jeszcze konta? <font fgcolor='#01C6DB'>Zarejestruj się</font></string>
     <string name="posiadaKonto">Masz już konto? <font fgcolor='#01C6DB'>Zaloguj się</font></string>
     <string name="zapomnialemHaslo"><font fgcolor='#F5372A'>Zapomniałem hasła</font></string>
+    <string name="ex1">Ćwiczenie pierwsze</string>
+    <string name="ex2">Ćwiczenie drugie</string>
+    <string name="ex3">Ćwiczenie trzecie</string>
+    <string name="ex4">Ćwiczenie czwarte</string>
+    <string name="ex5">Ćwiczenie piąte</string>
+    <string name="ex6">Ćwiczenie szóste</string>
+    <string name="ex7">Ćwiczenie siódme</string>
 </resources>

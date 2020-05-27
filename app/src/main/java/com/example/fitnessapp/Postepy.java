@@ -20,11 +20,9 @@ public class Postepy {
         this.iloscTrenigow = "0";
         this.iloscCwiczen = "0";
         this.poczatkowyObwodPasa = poczatkowyobwodpasa;
-        //this.poczatkowyObwodKlaty = poczatkowyobwodklaty;
         this.poczatkowyObwodBicepsa = poczatkowyobwodbicepsa;
         this.poczatkowaWaga = poczatkowawaga;
         this.docelowyObwodPasa = docelowyobwodpasa;
-        //this.docelowyoObwodKlaty = docelowyobwodklaty;
         this.docelowyObwodBicepsa = docelowyobwodbicepsa;
         this.docelowaWaga = docelowawaga;
     }

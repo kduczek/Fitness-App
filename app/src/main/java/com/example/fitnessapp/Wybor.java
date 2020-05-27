@@ -2,10 +2,8 @@ package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,9 +27,9 @@ import java.util.Objects;
 public class Wybor extends Fragment {
 
     private TextView Name,cw1,cw2,nr;
-    String nazwap;
-    public Button button1,button2,button3;
-    int i=0;
+    private String nazwap;
+    private Button button1,button2,button3;
+    private int i=0;
 
     @Nullable
     @Override
@@ -110,7 +107,7 @@ public class Wybor extends Fragment {
         final String uID;
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        uID = mFirebaseAuth.getCurrentUser().getUid();
+        uID = Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid();
 
         DocumentReference ref = db.collection("users").document(uID);
         ref.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -118,7 +115,7 @@ public class Wybor extends Fragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 final String username = documentSnapshot.getString("username");
 
-                DocumentReference refkonto=db.collection("Konta").document(username);
+                DocumentReference refkonto=db.collection("Konta").document(Objects.requireNonNull(username));
 
                 refkonto.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override

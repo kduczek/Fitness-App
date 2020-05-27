@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             case R.id.nav_wybor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Wybor()).addToBackStack(null).commit();
                 break;
-            case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).addToBackStack(null).commit();
-                break;
+//            case R.id.nav_settings:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).addToBackStack(null).commit();
+//                break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Wylogowano", Toast.LENGTH_SHORT).show();
