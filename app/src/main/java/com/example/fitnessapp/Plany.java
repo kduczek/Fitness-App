@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -244,7 +245,9 @@ public class Plany extends Fragment {
                             .addOnSuccessListener(new OnSuccessListener<Void>(){
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getContext(),"Postepy",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(),"Zapisano Postepy",Toast.LENGTH_SHORT).show();
+                                    Intent intToHome = new Intent(Plany.this.getActivity(), MainActivity.class);
+                                    startActivity(intToHome);
                                 }
                             });
                 }

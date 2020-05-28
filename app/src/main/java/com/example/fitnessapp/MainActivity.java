@@ -2,6 +2,7 @@ package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,10 +10,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +43,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     TextView user;
     String uID;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -79,7 +84,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MainFragment()).addToBackStack(null).commit();
-
                 break;
             case R.id.nav_plans:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Plany()).addToBackStack(null).commit();
@@ -95,6 +99,12 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 break;
             case R.id.nav_wybor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Wybor()).addToBackStack(null).commit();
+                break;
+            case R.id.nav_creatorcwi:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new KreatorCwi()).addToBackStack(null).commit();
+                break;
+            case R.id.nav_usun:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Usun()).addToBackStack(null).commit();
                 break;
 //            case R.id.nav_settings:
 //                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).addToBackStack(null).commit();

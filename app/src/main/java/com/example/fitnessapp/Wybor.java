@@ -42,7 +42,7 @@ public class Wybor extends Fragment {
         nr=view.findViewById(R.id.numer);
         button1=view.findViewById(R.id.cofnij);
         button2=view.findViewById(R.id.dalej);
-        button3=view.findViewById(R.id.zapisz);
+        button3=view.findViewById(R.id.Zapisz);
 
         FirebaseFirestore.getInstance()
                 .collection("PLANY")

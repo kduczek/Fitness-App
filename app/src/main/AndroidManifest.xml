@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Usun"></activity>
+        <activity android:name=".KreatorCwi" />
         <activity android:name=".Wybor" />
         <activity android:name=".DodajDane" />
         <activity android:name=".ProfilFragment" />

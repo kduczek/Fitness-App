@@ -16,11 +16,16 @@
             <item
                 android:id="@+id/nav_plans"
                 android:icon="@drawable/ic_fitness_center_black_24dp"
-                android:title="@string/plans" />
+                android:title="Trening" />
             <item
                 android:id="@+id/nav_creator"
                 android:icon="@drawable/ic_create_black_24dp"
-                android:title="@string/creator" />
+                android:title="Kreator Planów od zera" />
+
+            <item
+                android:id="@+id/nav_creatorcwi"
+                android:icon="@drawable/ic_create_black_24dp"
+                android:title="Kreator Planów" />
 
             <item
                 android:id="@+id/nav_dane"
@@ -29,7 +34,11 @@
             <item
                 android:id="@+id/nav_wybor"
                 android:icon="@drawable/ic_add_black_24dp"
-                android:title="@string/choose" />
+                android:title="Wybór planów" />
+            <item
+                android:id="@+id/nav_usun"
+                android:icon="@drawable/ic_clear_black_24dp"
+                android:title="Usuń plan" />
         </menu>
     </item>
 
