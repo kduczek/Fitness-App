@@ -121,7 +121,7 @@ public class Plany extends Fragment {
                                 cwiczenie6=documentSnapshot.getString("cwiczenie6");
                                 cwiczenie7=documentSnapshot.getString("cwiczenie7");
                                 if(i==0)
-                                {Numer.setText("Cwiczenie pierwsze");
+                                {Numer.setText(R.string.ex1);
                                     Tresc.setText(cwiczenie1);}
                                 i++;
 
@@ -129,19 +129,19 @@ public class Plany extends Fragment {
                                     @Override
                                     public void onClick(View view){
                                         if(i==1)
-                                        {Numer.setText("Cwiczenie drugie");
+                                        {Numer.setText(R.string.ex2);
                                             Tresc.setText(cwiczenie2);
                                         }
                                         else if(i==2)
                                         {
                                             if(cwiczenie3.equals(""))
                                             {
-                                                Numer.setText("Koniec");
+                                                Numer.setText(R.string.end);
                                                 SaveData();
                                             }
                                             else
                                             {
-                                                Numer.setText("Cwiczenie trzecie");
+                                                Numer.setText(R.string.ex3);
                                                 Tresc.setText(cwiczenie3);
                                             }
                                         }
@@ -149,12 +149,12 @@ public class Plany extends Fragment {
                                         {
                                             if(cwiczenie4.equals(""))
                                             {
-                                                Numer.setText("Koniec");
+                                                Numer.setText(R.string.end);
                                                 SaveData();
                                             }
                                             else
                                             {
-                                                Numer.setText("Cwiczenie czwarte");
+                                                Numer.setText(R.string.ex4);
                                                 Tresc.setText(cwiczenie4);
                                             }
                                         }
@@ -162,32 +162,39 @@ public class Plany extends Fragment {
                                         {
                                             if(cwiczenie5.equals(""))
                                             {
-                                                Numer.setText("Koniec");
+                                                Numer.setText(R.string.end);
                                                 SaveData();
                                             }
                                             else
                                             {
-                                                Numer.setText("Cwiczenie piate");
+                                                Numer.setText(R.string.ex5);
                                                 Tresc.setText(cwiczenie5);
                                             }
                                         }
                                         else if(i==5)
                                         {if(cwiczenie6.equals(""))
                                         {
-                                            Numer.setText("Koniec");
+                                            Numer.setText(R.string.end);
                                             SaveData();
                                         }
                                         else
                                         {
-                                            Numer.setText("Cwiczenie szuste");
+                                            Numer.setText(R.string.ex6);
                                             Tresc.setText(cwiczenie6);
                                         }}
                                         else if(i==6){
 
 
-                                            Numer.setText("Cwiczenie siudme");
+                                            Numer.setText(R.string.ex7);
                                             Tresc.setText(cwiczenie7);
-                                            SaveData();
+                                            button.setText(R.string.end);
+                                            button.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    SaveData();
+                                                }
+                                            });
+
                                         }
 
                                         i++;
@@ -201,7 +208,6 @@ public class Plany extends Fragment {
 
             }
         });
-
         return view;
     }
 
@@ -214,7 +220,6 @@ public class Plany extends Fragment {
         FirebaseFirestore dbb=FirebaseFirestore.getInstance();
             dbb.collection("Konta").document(urzytkownik.getKontoname()).update(
                    "licznik", urzytkownik.getLicznik());
-            //Tresc.setText(urzytkownik.getLicznik()+urzytkownik.getKontoname());
 
 
             DocumentReference refpostepy=dba.collection("Postepy").document(urzytkownik.getKontoname());

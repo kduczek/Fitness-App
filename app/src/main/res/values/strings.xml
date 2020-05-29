@@ -4,6 +4,7 @@
     <string name="navigation_drawer_close">Close Navigation drawer</string>
     <string name="open">open</string>
     <string name="close">close</string>
+
     <string name="DrawerDesc">DrawerMenuIcon</string>
     <string name="DrawerText">Drawer Header</string>
     <string name="main">Główne</string>
@@ -11,9 +12,12 @@
     <string name="home">Strona główna</string>
     <string name="plans">Plany</string>
     <string name="creator">Kreator Planów</string>
+    <string name="creatorFromZero">Kreator Planów Od Zera</string>
     <string name="add">Dodaj dane</string>
-    <string name="choose">Wybór</string>
+    <string name="choose">Wybór Planów</string>
+    <string name="remove">Usuń Plan</string>
     <string name="logout">Wyloguj</string>
+
     <string name="cm">cm</string>
     <string name="kg">kg</string>
     <string name="saveData">Zapisz Dane</string>
@@ -34,10 +38,12 @@
     <string name="planTitle">Nazwa planu</string>
     <string name="next">Dalej</string>
     <string name="save">Zapisz</string>
+    <string name="back">Cofnij</string>
     <string name="exDescription">Opisz swoje ćwiczenie</string>
     <string name="brakKonta">Nie masz jeszcze konta? <font fgcolor='#01C6DB'>Zarejestruj się</font></string>
     <string name="posiadaKonto">Masz już konto? <font fgcolor='#01C6DB'>Zaloguj się</font></string>
     <string name="zapomnialemHaslo"><font fgcolor='#F5372A'>Zapomniałem hasła</font></string>
+
     <string name="ex1">Ćwiczenie pierwsze</string>
     <string name="ex2">Ćwiczenie drugie</string>
     <string name="ex3">Ćwiczenie trzecie</string>
@@ -45,4 +51,21 @@
     <string name="ex5">Ćwiczenie piąte</string>
     <string name="ex6">Ćwiczenie szóste</string>
     <string name="ex7">Ćwiczenie siódme</string>
+    <string name="ex1Number">Ćwiczenie 1</string>
+    <string name="exNum">Numer ćwiczenia</string>
+    <string name="end">Koniec</string>
+    <string name="text">Treść</string>
+    <string name="update">Aktualizuj</string>
+    <string name="placeholder">Data</string>
+
+    <string name="userIcon">Zdjęcie użytkownika</string>
+    <string name="progress">Twoje postępy</string>
+    <string name="yourWeigth">Twoja waga</string>
+    <string name="yourWaist">Twój obwód pasa</string>
+    <string name="yourBiceps">Twój biceps</string>
+    <string name="training">Trening</string>
+    <string name="checkBox">Checkbox</string>
+    <string name="removePlans">Wybierz plany, które chcesz usunąć</string>
+    <string name="number">Numer</string>
+    <string name="planNumber">Podaj numer planu</string>
 </resources>

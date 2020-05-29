@@ -36,7 +36,7 @@ public class Wybor extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.activity_wybor, container, false);
 
-        Name = view.findViewById(R.id.textView3);
+        Name = view.findViewById(R.id.textViewNazwaPlanu);
         cw1=view.findViewById(R.id.cw1);
         cw2=view.findViewById(R.id.cw2);
         nr=view.findViewById(R.id.numer);

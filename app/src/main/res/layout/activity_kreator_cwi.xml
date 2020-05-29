@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context=".KreatorCwi">
 
     <Button
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="ZAPISZ"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -19,20 +20,22 @@
 
     <TextView
         android:id="@+id/Cwiczenie"
-        android:layout_width="203dp"
-        android:layout_height="219dp"
-        android:text="CWICZENIE"
+        android:layout_width="314dp"
+        android:layout_height="336dp"
+        android:background="@drawable/tv_shape"
+        android:text="@string/placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintVertical_bias="0.498" />
 
     <Button
         android:id="@+id/Dalej"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DALEJ"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.965"
@@ -44,7 +47,7 @@
         android:id="@+id/Cofnij"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="COFNIJ"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.034"
@@ -57,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:text="DODAJ"
+        android:text="@string/add"
         app:layout_constraintBottom_toTopOf="@+id/Zapisz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -71,19 +74,22 @@
         android:layout_height="41dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="NAZWA"
+        android:hint="@string/planTitle"
+        android:background="@drawable/tv_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.107"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/Cwiczenienr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Cwiczenie 1"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

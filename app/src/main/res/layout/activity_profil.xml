@@ -4,14 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context=".ProfilFragment">
 
-<!--    tego include trzeba dac na koncu, jak sie robi jakies zmiany to go zakomentowac-->
-    <include
-        android:id="@+id/include"
-        layout="@layout/drawer_toolbar"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="261dp" />
+
 
     <EditText
         android:id="@+id/editTextWagaProfil"
@@ -20,11 +16,13 @@
         android:layout_marginTop="296dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="kg"
+        android:hint="@string/kg"
+        android:background="@drawable/tv_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextBicepsProfil"
@@ -33,93 +31,110 @@
         android:layout_marginTop="396dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="cm"
+        android:hint="@string/cm"
+        android:background="@drawable/tv_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.632"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <ImageView
         android:id="@+id/imageViewProfil"
         android:layout_width="134dp"
         android:layout_height="116dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user_picture" />
+        app:srcCompat="@drawable/user_picture"
+        android:contentDescription="@string/userIcon" />
+
+    <TextView
+        android:id="@+id/textViewProfilTytul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="248dp"
+        android:text="@string/progress"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/NazwaUrzytkownika"
         android:layout_width="143dp"
         android:layout_height="38dp"
         android:gravity="center"
-        android:text="Profil"
+        android:text="@string/username"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewProfil"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <TextView
-        android:id="@+id/textViewProfilTytul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
-        android:text="Twoje postępy"
-        android:textSize="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.026" />
 
     <TextView
         android:id="@+id/wagaPocz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="340dp"
-        android:text="wagaPocz"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/bicPocz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="436dp"
-        android:text="bicPocz"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="440dp"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pasPocz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="536dp"
-        android:text="pasPocz"
+        android:layout_marginTop="532dp"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/bicDoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_marginTop="440dp"
         android:layout_marginEnd="12dp"
-        android:text="bicDoc"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/wagaDoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_marginTop="340dp"
         android:layout_marginEnd="12dp"
-        android:text="wagaDoc"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,7 +143,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="496dp"
-        android:text="Twój pas"
+        android:text="@string/yourWaist"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,9 +154,10 @@
         android:id="@+id/textViewCel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="272dp"
-        android:text="Cel"
-        android:textSize="20dp"
+        android:layout_marginTop="280dp"
+        android:text="@string/target"
+        android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +168,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="304dp"
-        android:text="Twoja waga"
+        android:text="@string/yourWeigth"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.397"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,11 +178,11 @@
     <ProgressBar
         android:id="@+id/pgBic"
         style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/progressbar_shape"
         android:layout_width="153dp"
         android:layout_height="23dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="444dp"
         app:layout_constraintEnd_toStartOf="@+id/bicDoc"
-        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toEndOf="@+id/bicPocz"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,7 +191,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
-        android:text="Twój biceps"
+        android:text="@string/yourBiceps"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.397"
         app:layout_constraintStart_toStartOf="parent"
@@ -181,11 +200,13 @@
 
     <TextView
         android:id="@+id/pasDoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
         android:layout_marginTop="532dp"
         android:layout_marginEnd="16dp"
-        android:text="pasDoc"
+        android:text="@string/placeholder"
+        android:background="@drawable/tv_shape"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -194,8 +215,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
-        android:text="Start"
-        android:textSize="20dp"
+        android:text="@string/start"
+        android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.035"
         app:layout_constraintStart_toStartOf="parent"
@@ -206,20 +228,21 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="153dp"
         android:layout_height="23dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="344dp"
+        android:progressDrawable="@drawable/progressbar_shape"
         app:layout_constraintEnd_toStartOf="@+id/wagaDoc"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toEndOf="@+id/wagaPocz"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/pgPas"
         style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/progressbar_shape"
         android:layout_width="153dp"
         android:layout_height="23dp"
-        android:layout_marginTop="532dp"
+        android:layout_marginTop="536dp"
         app:layout_constraintEnd_toStartOf="@+id/pasDoc"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toEndOf="@+id/pasPocz"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -228,7 +251,7 @@
         android:layout_width="153dp"
         android:layout_height="41dp"
         android:layout_marginTop="600dp"
-        android:text="Aktualizuj"
+        android:text="@string/update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
@@ -241,10 +264,12 @@
         android:layout_marginTop="492dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="cm"
+        android:hint="@string/cm"
+        android:background="@drawable/tv_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

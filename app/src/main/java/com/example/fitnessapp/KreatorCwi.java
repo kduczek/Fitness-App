@@ -40,6 +40,7 @@ public class KreatorCwi extends Fragment {
 
         Nazwa=view.findViewById(R.id.Nazwa);
         numer=view.findViewById(R.id.Cwiczenienr);
+        numer.setText(R.string.ex1Number);
         cwiczenie=view.findViewById(R.id.Cwiczenie);
         final Button buttonzapisz = view.findViewById(R.id.Zapisz);
         final Button buttoncofnij = view.findViewById(R.id.Cofnij);
@@ -61,7 +62,10 @@ public class KreatorCwi extends Fragment {
                                     if(i>0){
                                         i--;}
                                     if(i>=0){
-                                        cwiczenie.setText(Lista.get(i).getString("Opis")); }
+                                        cwiczenie.setText(Lista.get(i).getString("Opis"));
+                                        String temp = "Cwiczenie ";
+                                        temp += (i + 1);
+                                        numer.setText(temp);}
                                 }
                             });
 
@@ -71,36 +75,47 @@ public class KreatorCwi extends Fragment {
                                     if(i<Lista.size()-1){
                                         i++;}
                                     if(i<Lista.size()){
-                                        cwiczenie.setText(Lista.get(i).getString("Opis"));}
+                                        cwiczenie.setText(Lista.get(i).getString("Opis"));
+                                        String temp = "Cwiczenie ";
+                                        temp += (i + 1);
+                                        numer.setText(temp);}
                                 }
                             });
 
                             buttondodaj.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v){
+                                    String exercise = "Cwiczenie ";
                                     if(c==1)
                                     {cwiczenie1=cwiczenie.getText().toString();
                                     c++;
-                                    numer.setText("Cwiczenie " + Integer.toString(c));}
+                                    exercise += c;
+                                    numer.setText(exercise);}
                                     else if(c==2)
                                     {cwiczenie2=cwiczenie.getText().toString();
-                                        c++;}
+                                        c++;
+                                        exercise += c;
+                                        numer.setText(exercise);}
                                     else if(c==3)
                                     {cwiczenie3=cwiczenie.getText().toString();
                                         c++;
-                                        numer.setText("Cwiczenie " + Integer.toString(c));}
+                                        exercise += c;
+                                        numer.setText(exercise);}
                                     else if(c==4)
                                     {cwiczenie4=cwiczenie.getText().toString();
                                         c++;
-                                        numer.setText("Cwiczenie " + Integer.toString(c));}
+                                        exercise += c;
+                                        numer.setText(exercise);}
                                     else if(c==5)
                                     {cwiczenie5=cwiczenie.getText().toString();
                                         c++;
-                                        numer.setText("Cwiczenie " + Integer.toString(c));}
+                                        exercise += c;
+                                        numer.setText(exercise);}
                                     else if(c==6)
                                     {cwiczenie6=cwiczenie.getText().toString();
                                         c++;
-                                        numer.setText("Cwiczenie " + Integer.toString(c));}
+                                        exercise += c;
+                                        numer.setText(exercise);}
                                     else if(c==7)
                                     {cwiczenie7=cwiczenie.getText().toString();
                                         c++;}

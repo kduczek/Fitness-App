@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context=".Kreator">
-    <include layout="@layout/drawer_toolbar" />
+
 
     <EditText
         android:id="@+id/NazwaPlanu"
@@ -14,6 +15,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/planTitle"
+        android:background="@drawable/tv_shape"
         app:layout_constraintBottom_toTopOf="@+id/Cwiczenie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +29,7 @@
         android:layout_height="362dp"
         android:ems="10"
         android:hint="@string/exDescription"
+        android:background="@drawable/tv_shape"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +68,6 @@
         android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toTopOf="@+id/Cwiczenie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

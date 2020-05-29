@@ -4,27 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context=".DodajDane">
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/drawer_toolbar"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="261dp" />
-
 
 
     <Button
         android:id="@+id/ZapiszDane"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="568dp"
         android:text="@string/saveData"
-        app:layout_constraintBottom_toBottomOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewNapis"
@@ -32,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:text="@string/fillData"
+        android:textStyle="bold"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,12 +38,13 @@
         android:layout_marginTop="280dp"
         android:ems="10"
         android:hint="@string/kg"
+        android:background="@drawable/tv_shape"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextWaga1"
@@ -58,19 +53,21 @@
         android:layout_marginTop="280dp"
         android:ems="10"
         android:hint="@string/kg"
+        android:background="@drawable/tv_shape"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewWaga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="260dp"
         android:text="@string/weight"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="204dp"
         android:text="@string/start"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.149"
@@ -94,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="204dp"
         android:text="@string/target"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.853"
@@ -104,12 +103,13 @@
         android:id="@+id/textViewBiceps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="356dp"
+        android:layout_marginTop="364dp"
         android:text="@string/biceps"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextBiceps1"
@@ -118,12 +118,13 @@
         android:layout_marginTop="392dp"
         android:ems="10"
         android:hint="@string/cm"
+        android:background="@drawable/tv_shape"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextBiceps2"
@@ -132,23 +133,25 @@
         android:layout_marginTop="392dp"
         android:ems="10"
         android:hint="@string/cm"
+        android:background="@drawable/tv_shape"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewPas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="464dp"
+        android:layout_marginTop="468dp"
         android:text="@string/waist"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextPas1"
@@ -157,12 +160,13 @@
         android:layout_marginTop="496dp"
         android:ems="10"
         android:hint="@string/cm"
+        android:background="@drawable/tv_shape"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextPas2"
@@ -171,10 +175,11 @@
         android:layout_marginTop="496dp"
         android:ems="10"
         android:hint="@string/cm"
+        android:background="@drawable/tv_shape"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

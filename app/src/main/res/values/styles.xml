@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <!-- Styl bez Action Bar'a -->
@@ -13,5 +14,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<!--    <style name="CustomTheme" parent="android:Theme.Holo.Light.DarkActionBar">-->
+<!--        <item name="android:windowBackground">@color/ActivityBackground</item>-->
+<!--        <item name="android:colorBackground">@color/ActivityBackground</item>-->
+<!--    </style>-->
 
 </resources>

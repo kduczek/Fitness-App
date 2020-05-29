@@ -8,4 +8,6 @@
     <color name="colorLogin2">#107DAC</color>
     <color name="colorLogin3">#189AD3</color>
 
+    <color name="ActivityBackground">#EDE7F6</color>
+
 </resources>
