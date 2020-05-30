@@ -23,9 +23,8 @@ public class Usun extends Fragment {
     private int i = 0;
     private String[] plany={"","","","","","",""};
     private String username;
-    CheckBox p1,p2,p3,p4,p5,p6,p7;
+    private CheckBox p1,p2,p3,p4,p5,p6,p7;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
-    private DocumentReference ref;
 
     @Nullable
     @Override
@@ -68,7 +67,7 @@ public class Usun extends Fragment {
                         button.setOnClickListener(new View.OnClickListener(){
                             @Override
                             public void onClick(View v){
-                                Usun();
+                                Kasuj();
                             }
                         });
                     }
@@ -83,7 +82,7 @@ public class Usun extends Fragment {
         return view;
     }
 
-    private void Usun(){
+    private void Kasuj(){
         if(!p1.isChecked())
         {
             if(!p1.getText().toString().equals(""))
@@ -127,7 +126,7 @@ public class Usun extends Fragment {
             {plany[i]=p7.getText().toString();
             i++;}
         }
-        final FirebaseFirestore dba=FirebaseFirestore.getInstance();
+
         FirebaseFirestore dbb=FirebaseFirestore.getInstance();
         dbb.collection("Konta").document(username).update(
                 "plan1", plany[0]);

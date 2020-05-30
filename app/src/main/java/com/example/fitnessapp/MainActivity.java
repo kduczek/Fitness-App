@@ -2,7 +2,6 @@ package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,15 +9,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -106,9 +100,6 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             case R.id.nav_usun:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new Usun()).addToBackStack(null).commit();
                 break;
-//            case R.id.nav_settings:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new SettingsFragment()).addToBackStack(null).commit();
-//                break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(this, "Wylogowano", Toast.LENGTH_SHORT).show();

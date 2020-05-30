@@ -59,26 +59,33 @@ public class KreatorCwi extends Fragment {
                             buttoncofnij.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v){
-                                    if(i>0){
-                                        i--;}
+                                    if(i>0)
+                                    {
+                                        i--;
+                                    }
                                     if(i>=0){
                                         cwiczenie.setText(Lista.get(i).getString("Opis"));
                                         String temp = "Cwiczenie ";
                                         temp += (i + 1);
-                                        numer.setText(temp);}
+                                        numer.setText(temp);
+                                    }
                                 }
                             });
 
                             buttondalej.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v){
-                                    if(i<Lista.size()-1){
-                                        i++;}
-                                    if(i<Lista.size()){
+                                    if(i<Lista.size()-1)
+                                    {
+                                        i++;
+                                    }
+                                    if(i<Lista.size())
+                                    {
                                         cwiczenie.setText(Lista.get(i).getString("Opis"));
                                         String temp = "Cwiczenie ";
                                         temp += (i + 1);
-                                        numer.setText(temp);}
+                                        numer.setText(temp);
+                                    }
                                 }
                             });
 
@@ -86,39 +93,54 @@ public class KreatorCwi extends Fragment {
                                 @Override
                                 public void onClick(View v){
                                     String exercise = "Cwiczenie ";
+
                                     if(c==1)
-                                    {cwiczenie1=cwiczenie.getText().toString();
-                                    c++;
-                                    exercise += c;
-                                    numer.setText(exercise);}
+                                    {
+                                        cwiczenie1=cwiczenie.getText().toString();
+                                        c++;
+                                        exercise += c;
+                                        numer.setText(exercise);
+                                    }
                                     else if(c==2)
-                                    {cwiczenie2=cwiczenie.getText().toString();
+                                    {
+                                        cwiczenie2=cwiczenie.getText().toString();
                                         c++;
                                         exercise += c;
-                                        numer.setText(exercise);}
+                                        numer.setText(exercise);
+                                    }
                                     else if(c==3)
-                                    {cwiczenie3=cwiczenie.getText().toString();
+                                    {
+                                        cwiczenie3=cwiczenie.getText().toString();
                                         c++;
                                         exercise += c;
-                                        numer.setText(exercise);}
+                                        numer.setText(exercise);
+                                    }
                                     else if(c==4)
-                                    {cwiczenie4=cwiczenie.getText().toString();
+                                    {
+                                        cwiczenie4=cwiczenie.getText().toString();
                                         c++;
                                         exercise += c;
-                                        numer.setText(exercise);}
+                                        numer.setText(exercise);
+                                    }
                                     else if(c==5)
-                                    {cwiczenie5=cwiczenie.getText().toString();
+                                    {
+                                        cwiczenie5=cwiczenie.getText().toString();
                                         c++;
                                         exercise += c;
-                                        numer.setText(exercise);}
+                                        numer.setText(exercise);
+                                    }
                                     else if(c==6)
-                                    {cwiczenie6=cwiczenie.getText().toString();
+                                    {
+                                        cwiczenie6=cwiczenie.getText().toString();
                                         c++;
                                         exercise += c;
-                                        numer.setText(exercise);}
+                                        numer.setText(exercise);
+                                    }
                                     else if(c==7)
-                                    {cwiczenie7=cwiczenie.getText().toString();
-                                        c++;}
+                                    {
+                                        cwiczenie7=cwiczenie.getText().toString();
+                                        c++;
+                                    }
                                 }
                             });
 
@@ -138,9 +160,12 @@ public class KreatorCwi extends Fragment {
     private void SaveData(){
         String name=Nazwa.getText().toString();
 
-        if(!Nazwa.getText().toString().equals("NAZWA")){
+        if(!Nazwa.getText().toString().equals("NAZWA"))
+        {
             String nazwa = Nazwa.getText().toString();
-            ref=db.collection("PLANY").document(nazwa);}
+            ref=db.collection("PLANY").document(nazwa);
+        }
+
         Plan plan=new Plan(name,cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7);
         ref.set(plan)
                 .addOnSuccessListener(new OnSuccessListener<Void>(){

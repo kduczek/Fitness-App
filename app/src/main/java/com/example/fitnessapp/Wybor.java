@@ -70,12 +70,16 @@ public class Wybor extends Fragment {
                             button2.setOnClickListener(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View v){
-                                    if(i<Lista.size()-1){
-                                        i++;}
-                                    if(i<Lista.size()){
+                                    if(i<Lista.size()-1)
+                                    {
+                                        i++;
+                                    }
+                                    if(i<Lista.size())
+                                    {
                                         Name.setText(Lista.get(i).getString("name"));
                                         cw1.setText(Lista.get(i).getString("cwiczenie1"));
-                                        cw2.setText(Lista.get(i).getString("cwiczenie2"));}
+                                        cw2.setText(Lista.get(i).getString("cwiczenie2"));
+                                    }
                                 }
                             });
 

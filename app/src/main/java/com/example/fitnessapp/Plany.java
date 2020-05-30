@@ -129,7 +129,8 @@ public class Plany extends Fragment {
                                     @Override
                                     public void onClick(View view){
                                         if(i==1)
-                                        {Numer.setText(R.string.ex2);
+                                        {
+                                            Numer.setText(R.string.ex2);
                                             Tresc.setText(cwiczenie2);
                                         }
                                         else if(i==2)
@@ -172,19 +173,20 @@ public class Plany extends Fragment {
                                             }
                                         }
                                         else if(i==5)
-                                        {if(cwiczenie6.equals(""))
                                         {
-                                            Numer.setText(R.string.end);
-                                            SaveData();
+                                            if(cwiczenie6.equals(""))
+                                            {
+                                                Numer.setText(R.string.end);
+                                                SaveData();
+                                            }
+                                            else
+                                            {
+                                                Numer.setText(R.string.ex6);
+                                                Tresc.setText(cwiczenie6);
+                                            }
                                         }
-                                        else
+                                        else if(i==6)
                                         {
-                                            Numer.setText(R.string.ex6);
-                                            Tresc.setText(cwiczenie6);
-                                        }}
-                                        else if(i==6){
-
-
                                             Numer.setText(R.string.ex7);
                                             Tresc.setText(cwiczenie7);
                                             button.setText(R.string.end);
@@ -229,7 +231,7 @@ public class Plany extends Fragment {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                    Postepy postep;
+                            Postepy postep;
                             String dane1=documentSnapshot.getString("nazwaUzytkownika");
                             String dane2=documentSnapshot.getString("poczatkowyObwodPasa");
                             String dane3= documentSnapshot.getString("poczatkowyObwodBicepsa");

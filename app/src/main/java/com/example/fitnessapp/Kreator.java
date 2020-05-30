@@ -95,9 +95,12 @@ public class Kreator extends Fragment {
     private void SaveData(){
         String name=editText1.getText().toString();
 
-        if(!editText1.getText().toString().equals("Name")){
+        if(!editText1.getText().toString().equals("Name"))
+        {
             String nazwa = editText1.getText().toString();
-            ref=db.collection("PLANY").document(nazwa);}
+            ref=db.collection("PLANY").document(nazwa);
+        }
+
        Plan plan=new Plan(name,cwiczenie1,cwiczenie2,cwiczenie3,cwiczenie4,cwiczenie5,cwiczenie6,cwiczenie7);
        ref.set(plan)
                 .addOnSuccessListener(new OnSuccessListener<Void>(){
