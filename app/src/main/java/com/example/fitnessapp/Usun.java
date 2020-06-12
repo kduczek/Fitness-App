@@ -64,6 +64,35 @@ public class Usun extends Fragment {
                         p6.setText(documentSnapshotk.getString("plan6"));
                         p7.setText(documentSnapshotk.getString("plan7"));
 
+                        if(p7.getText().toString().equals(""))
+                        {
+                            p7.setVisibility(View.GONE);
+                        }
+                        if(p6.getText().toString().equals(""))
+                        {
+                            p6.setVisibility(View.GONE);
+                        }
+                        if(p5.getText().toString().equals(""))
+                        {
+                            p5.setVisibility(View.GONE);
+                        }
+                        if(p4.getText().toString().equals(""))
+                        {
+                            p4.setVisibility(View.GONE);
+                        }
+                        if(p3.getText().toString().equals(""))
+                        {
+                            p3.setVisibility(View.GONE);
+                        }
+                        if(p2.getText().toString().equals(""))
+                        {
+                            p2.setVisibility(View.GONE);
+                        }
+                        if(p1.getText().toString().equals(""))
+                        {
+                            p1.setVisibility(View.GONE);
+                        }
+
                         button.setOnClickListener(new View.OnClickListener(){
                             @Override
                             public void onClick(View v){

@@ -2,7 +2,7 @@ package com.example.fitnessapp;
 
 
 public class Konto {
-    private String username;
+    private String kontoname;
     private String email;
     private String plan1;
     private String plan2;
@@ -18,13 +18,20 @@ public class Konto {
 
     public  Konto(String u, String e)
     {
-        username = u;
+        kontoname = u;
         email = e;
         licznik ="0";
+        plan1="";
+        plan2="";
+        plan3="";
+        plan4="";
+        plan5="";
+        plan6="";
+        plan7="";
     }
 
     Konto(String u, String e, String p1, String p2, String p3, String p4, String p5, String p6, String p7, String l) {
-        username = u;
+        kontoname = u;
         email = e;
         plan1=p1;
         plan2=p2;
@@ -37,11 +44,11 @@ public class Konto {
     }
 
     String getKontoname() {
-        return username;
+        return kontoname;
     }
 
     private void setKontoname(String username) {
-        this.username = username;
+        this.kontoname = username;
     }
 
     public String getEmail() {

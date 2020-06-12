@@ -105,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 });
 
 
-                                konto = new Konto(usernm, email, "", "", "", "", "", "", "", "");
+                                konto = new Konto(usernm, email);
                                 userID = mFirebaseAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = fStore.collection("users").document(userID);
                                 Map<String, Object> user = new HashMap<>();
@@ -125,6 +125,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     }
                                 });
+                                documentReference.update(
+                                        "licznik", "0");
+                                documentReference.update(
+                                        "kontoname", usernm);
                                 //a tu konczy
                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                             }

@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +36,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     FirebaseAuth mFirebaseAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference ref;
-    TextView user;
+    TextView user, quote;
     String uID;
+    ImageView background;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
+        background = findViewById(R.id.imgBackground);
+        quote = findViewById(R.id.textViewQuote);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -67,6 +72,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         //domyslny fragment
 
+       quote.setVisibility(View.GONE);
+       background.setVisibility(View.GONE);
         getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MainFragment()).commit();
 
     }

@@ -68,4 +68,7 @@
     <string name="removePlans">Wybierz plany, które chcesz usunąć</string>
     <string name="number">Numer</string>
     <string name="planNumber">Podaj numer planu</string>
+    <string name="motivation">Jedyną osobą, która może cię zmotywować jesteś ty sam!</string>
+    <string name="backgroundName">backgroundImage</string>
+    <string name="addEx">Dodaj ćwiczenie</string>
 </resources>
